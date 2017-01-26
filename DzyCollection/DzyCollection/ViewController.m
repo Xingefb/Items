@@ -15,7 +15,9 @@ static NSString * cellId = @"ViewCell";
 static NSString * titleCellId = @"TitleCell";
 
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
-
+{
+    UILongPressGestureRecognizer *longPress;
+}
 @property (weak, nonatomic) IBOutlet UICollectionView *titleScroll;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -123,7 +125,7 @@ static NSString * titleCellId = @"TitleCell";
     [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
     
     
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(clickLongPress:)];
+    longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(clickLongPress:)];
     
     [self.titleScroll addGestureRecognizer:longPress];
     // Do any additional setup after loading the view, typically from a nib.
@@ -131,27 +133,39 @@ static NSString * titleCellId = @"TitleCell";
 
 - (void)clickLongPress:(UILongPressGestureRecognizer *)sender {
     
-    CGPoint location = [sender locationInView:self.titleScroll];
-    NSLog(@"%f",location.x);
-
-    NSIndexPath *indexPath = [self.titleScroll indexPathForItemAtPoint:location];
-    if (indexPath) {
-        switch (sender.state) {
-            case UIGestureRecognizerStateBegan:
-                [self.titleScroll beginInteractiveMovementForItemAtIndexPath:indexPath];
-                break;
-            case UIGestureRecognizerStateChanged:
-                [self.titleScroll updateInteractiveMovementTargetPosition:[sender locationInView:self.titleScroll]];
-                break;
-            default:
-                break;
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan: {
+            {
+                NSIndexPath *selectIndexPath = [self.titleScroll indexPathForItemAtPoint:[sender locationInView:self.titleScroll]];
+                // 找到当前的cell 如果上边有button 覆盖的话隐藏
+                //TitleCell *cell = (TitleCell *)[self.titleScroll cellForItemAtIndexPath:selectIndexPath];
+                // 定义cell的时候btn是隐藏的, 在这里设置为NO
+                [_titleScroll beginInteractiveMovementForItemAtIndexPath:selectIndexPath];
+            }
+            break;
         }
+        case UIGestureRecognizerStateChanged: {
+            [self.titleScroll updateInteractiveMovementTargetPosition:[sender locationInView:_titleScroll]];
+            break;
+        }
+        case UIGestureRecognizerStateEnded: {
+            [self.titleScroll endInteractiveMovement];
+            break;
+        }
+        default: [self.titleScroll cancelInteractiveMovement];
+            break;
     }
 
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        [self.titleScroll endInteractiveMovement];
-    }
+}
 
+- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+
+    //NSIndexPath *selectIndexPath = [self.titleScroll indexPathForItemAtPoint:[longPress locationInView:self.titleScroll]];
+    // 找到当前的cell
+    //TitleCell *cell = (TitleCell *)[self.titleScroll cellForItemAtIndexPath:selectIndexPath];
+    [self.data exchangeObjectAtIndex:sourceIndexPath.item withObjectAtIndex:destinationIndexPath.item];
+    [self.titleScroll reloadData];
+    [self.collectionView reloadData];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
