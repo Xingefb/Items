@@ -62,11 +62,12 @@ static NSString * titleCellId = @"TitleCell";
 
     [collectionView performBatchUpdates:^{
         
-        NSString *old = self.data[oldIndex];
-        NSString *new = self.data[newIndex];
-        [self.data replaceObjectAtIndex:oldIndex withObject:new];
-        [self.data replaceObjectAtIndex:newIndex withObject:old];
-        
+        //NSString *old = self.data[oldIndex];
+        //NSString *new = self.data[newIndex];
+        //[self.data replaceObjectAtIndex:oldIndex withObject:new];
+        //[self.data replaceObjectAtIndex:newIndex withObject:old];
+        [self.data exchangeObjectAtIndex:oldIndex withObjectAtIndex:newIndex];
+
         NSIndexPath *oldNum =[NSIndexPath indexPathForRow:oldIndex inSection:0];
         NSIndexPath *newNum =[NSIndexPath indexPathForRow:newIndex inSection:0];
         [collectionView moveItemAtIndexPath:oldNum toIndexPath:newNum];
@@ -121,7 +122,36 @@ static NSString * titleCellId = @"TitleCell";
     self.data =  [NSMutableArray arrayWithCapacity:10];
     [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
     
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(clickLongPress:)];
+    
+    [self.titleScroll addGestureRecognizer:longPress];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)clickLongPress:(UILongPressGestureRecognizer *)sender {
+    
+    CGPoint location = [sender locationInView:self.titleScroll];
+    NSLog(@"%f",location.x);
+
+    NSIndexPath *indexPath = [self.titleScroll indexPathForItemAtPoint:location];
+    if (indexPath) {
+        switch (sender.state) {
+            case UIGestureRecognizerStateBegan:
+                [self.titleScroll beginInteractiveMovementForItemAtIndexPath:indexPath];
+                break;
+            case UIGestureRecognizerStateChanged:
+                [self.titleScroll updateInteractiveMovementTargetPosition:[sender locationInView:self.titleScroll]];
+                break;
+            default:
+                break;
+        }
+    }
+
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [self.titleScroll endInteractiveMovement];
+    }
+
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
