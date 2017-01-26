@@ -160,12 +160,10 @@ static NSString * titleCellId = @"TitleCell";
 
 - (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
 
-    //NSIndexPath *selectIndexPath = [self.titleScroll indexPathForItemAtPoint:[longPress locationInView:self.titleScroll]];
-    // 找到当前的cell
-    //TitleCell *cell = (TitleCell *)[self.titleScroll cellForItemAtIndexPath:selectIndexPath];
     [self.data exchangeObjectAtIndex:sourceIndexPath.item withObjectAtIndex:destinationIndexPath.item];
     [self.titleScroll reloadData];
     [self.collectionView reloadData];
+    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
