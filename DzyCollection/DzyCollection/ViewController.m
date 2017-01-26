@@ -41,6 +41,7 @@ static NSString * titleCellId = @"TitleCell";
     } completion:^(BOOL finished) {
         if (finished) {
             [self.titleScroll reloadData];
+            [self.collectionView reloadData];
         }
     }];
 
@@ -126,9 +127,22 @@ static NSString * titleCellId = @"TitleCell";
     
     
     longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(clickLongPress:)];
-    
     [self.titleScroll addGestureRecognizer:longPress];
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickDoubleTap:)];
+    [doubleTap setNumberOfTapsRequired:2];
+    [self.titleScroll addGestureRecognizer:doubleTap];
+
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)clickDoubleTap:(UITapGestureRecognizer *)tap {
+    
+    NSIndexPath *selectIndexPath = [self.titleScroll indexPathForItemAtPoint:[tap locationInView:self.titleScroll]];
+    NSLog(@"%ld",(long)selectIndexPath.row);
+
+    [self deleteWithCollection:self.titleScroll andIndex:selectIndexPath.row];
+    
 }
 
 - (void)clickLongPress:(UILongPressGestureRecognizer *)sender {
@@ -149,6 +163,7 @@ static NSString * titleCellId = @"TitleCell";
             break;
         }
         case UIGestureRecognizerStateEnded: {
+
             [self.titleScroll endInteractiveMovement];
             break;
         }
@@ -161,6 +176,7 @@ static NSString * titleCellId = @"TitleCell";
 - (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
 
     [self.data exchangeObjectAtIndex:sourceIndexPath.item withObjectAtIndex:destinationIndexPath.item];
+    NSLog(@"%@",self.data);
     [self.titleScroll reloadData];
     [self.collectionView reloadData];
     
