@@ -13,7 +13,7 @@
 - (void)loadDataWithIndex:(NSInteger)index {
     
     // if have data not load 
-    NSLog(@"will to load data %ld",(long)index);
+//    NSLog(@"will to load data %ld",(long)index);
 
 }
 
@@ -27,7 +27,7 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-    NSLog(@"666");
+//    NSLog(@"666");
 }
 
 @end

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TitleCellDelegate <NSObject>
+
+- (void)didClickCell:(UILabel *)label;
+
+@end
+
 @interface TitleCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *msg;
 

@@ -10,19 +10,21 @@
 #import "ViewCell.h"
 #import "TitleCell.h"
 
-
 static NSString * cellId = @"ViewCell";
 static NSString * titleCellId = @"TitleCell";
 
-@interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
+@interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
     UILongPressGestureRecognizer *longPress;
 }
+
 @property (weak, nonatomic) IBOutlet UICollectionView *titleScroll;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic )NSMutableArray *data;
+
+@property (nonatomic ) NSInteger endIndex;
 
 @end
 
@@ -132,7 +134,7 @@ static NSString * titleCellId = @"TitleCell";
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickDoubleTap:)];
     [doubleTap setNumberOfTapsRequired:2];
     [self.titleScroll addGestureRecognizer:doubleTap];
-
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -140,7 +142,6 @@ static NSString * titleCellId = @"TitleCell";
     
     NSIndexPath *selectIndexPath = [self.titleScroll indexPathForItemAtPoint:[tap locationInView:self.titleScroll]];
     NSLog(@"%ld",(long)selectIndexPath.row);
-
     [self deleteWithCollection:self.titleScroll andIndex:selectIndexPath.row];
     
 }
@@ -176,7 +177,7 @@ static NSString * titleCellId = @"TitleCell";
 - (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
 
     [self.data exchangeObjectAtIndex:sourceIndexPath.item withObjectAtIndex:destinationIndexPath.item];
-    NSLog(@"%@",self.data);
+//    NSLog(@"%@",self.data);
     [self.titleScroll reloadData];
     [self.collectionView reloadData];
     
@@ -192,27 +193,27 @@ static NSString * titleCellId = @"TitleCell";
     }else {
     
     }
+    
 }
 
 // can add animation 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    NSLog(@" to %ld",(long)indexPath.item);
+    
     if (collectionView == self.collectionView) {
 
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        
         ViewCell *customcell =(ViewCell *)cell;
         [customcell loadDataWithIndex:indexPath.item];
-
+        
     }else {
+//        TitleCell *customcell =(TitleCell *)cell;
 
     }
     
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     if (collectionView == self.collectionView) {
         
         ViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
