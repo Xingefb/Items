@@ -44,7 +44,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3MK-ZK-9cd">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="I1L-pj-qOJ">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="I1L-pj-qOJ" customClass="ViewFlowLayout">
                                     <size key="itemSize" width="375" height="597"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -125,7 +125,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tIi-r6-g0p">
                                 <rect key="frame" x="0.0" y="70" width="325" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="8UZ-ii-hPa">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="8UZ-ii-hPa" customClass="TitleFlowLayout">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -140,7 +140,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-1B-IKy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.84705882349999995" green="0.17254901959999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -148,10 +148,10 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="CZg-1B-IKy" secondAttribute="bottom" id="E10-cP-7Xh"/>
-                                            <constraint firstItem="CZg-1B-IKy" firstAttribute="top" secondItem="24s-Mn-Wbc" secondAttribute="top" id="bGr-Bt-RGE"/>
-                                            <constraint firstAttribute="trailing" secondItem="CZg-1B-IKy" secondAttribute="trailing" id="ilU-cx-BiX"/>
-                                            <constraint firstItem="CZg-1B-IKy" firstAttribute="leading" secondItem="24s-Mn-Wbc" secondAttribute="leading" id="rqR-y7-rR2"/>
+                                            <constraint firstAttribute="trailing" secondItem="CZg-1B-IKy" secondAttribute="trailing" constant="10" id="8KT-CV-xDp"/>
+                                            <constraint firstAttribute="bottom" secondItem="CZg-1B-IKy" secondAttribute="bottom" constant="10" id="DUk-00-DaE"/>
+                                            <constraint firstItem="CZg-1B-IKy" firstAttribute="top" secondItem="24s-Mn-Wbc" secondAttribute="top" constant="10" id="FiD-bV-aui"/>
+                                            <constraint firstItem="CZg-1B-IKy" firstAttribute="leading" secondItem="24s-Mn-Wbc" secondAttribute="leading" constant="10" id="lhb-IJ-JrM"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="msg" destination="CZg-1B-IKy" id="cQq-jG-hCM"/>

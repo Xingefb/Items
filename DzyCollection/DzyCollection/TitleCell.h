@@ -15,6 +15,9 @@
 @end
 
 @interface TitleCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *msg;
+
+@property (nonatomic ) NSString *color;
 
 @end

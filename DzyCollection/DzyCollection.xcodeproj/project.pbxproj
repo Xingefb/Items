@@ -18,6 +18,8 @@
 		404EF33E1E376512007A3D30 /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF33D1E376512007A3D30 /* OneViewController.m */; };
 		404EF3411E37651A007A3D30 /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF3401E37651A007A3D30 /* TwoViewController.m */; };
 		404EF3441E376533007A3D30 /* ViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF3431E376533007A3D30 /* ViewCell.m */; };
+		4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4072419E1E496ED200C4A89D /* ViewFlowLayout.m */; };
+		407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 407241A11E496EE000C4A89D /* TitleFlowLayout.m */; };
 		40C516FF1E3875AC005E036E /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C516FE1E3875AC005E036E /* TitleCell.m */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,10 @@
 		404EF3401E37651A007A3D30 /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		404EF3421E376533007A3D30 /* ViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCell.h; sourceTree = "<group>"; };
 		404EF3431E376533007A3D30 /* ViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCell.m; sourceTree = "<group>"; };
+		4072419D1E496ED200C4A89D /* ViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFlowLayout.h; sourceTree = "<group>"; };
+		4072419E1E496ED200C4A89D /* ViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFlowLayout.m; sourceTree = "<group>"; };
+		407241A01E496EE000C4A89D /* TitleFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleFlowLayout.h; sourceTree = "<group>"; };
+		407241A11E496EE000C4A89D /* TitleFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleFlowLayout.m; sourceTree = "<group>"; };
 		40C516FD1E3875AC005E036E /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
 		40C516FE1E3875AC005E036E /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +136,10 @@
 				404EF3431E376533007A3D30 /* ViewCell.m */,
 				40C516FD1E3875AC005E036E /* TitleCell.h */,
 				40C516FE1E3875AC005E036E /* TitleCell.m */,
+				4072419D1E496ED200C4A89D /* ViewFlowLayout.h */,
+				4072419E1E496ED200C4A89D /* ViewFlowLayout.m */,
+				407241A01E496EE000C4A89D /* TitleFlowLayout.h */,
+				407241A11E496EE000C4A89D /* TitleFlowLayout.m */,
 			);
 			path = DzyCollection;
 			sourceTree = "<group>";
@@ -298,8 +308,10 @@
 				404EF30E1E3744D9007A3D30 /* AppDelegate.m in Sources */,
 				404EF30B1E3744D9007A3D30 /* main.m in Sources */,
 				404EF3411E37651A007A3D30 /* TwoViewController.m in Sources */,
+				4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */,
 				404EF3441E376533007A3D30 /* ViewCell.m in Sources */,
 				40C516FF1E3875AC005E036E /* TitleCell.m in Sources */,
+				407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */,
 				404EF33E1E376512007A3D30 /* OneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

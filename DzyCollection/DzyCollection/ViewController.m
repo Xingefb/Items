@@ -10,8 +10,7 @@
 #import "ViewCell.h"
 #import "TitleCell.h"
 
-static NSString * cellId = @"ViewCell";
-static NSString * titleCellId = @"TitleCell";
+
 
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
@@ -23,8 +22,9 @@ static NSString * titleCellId = @"TitleCell";
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic )NSMutableArray *data;
-
+@property (nonatomic )NSMutableArray *colors;
 @property (nonatomic ) NSInteger endIndex;
+@property (nonatomic ) NSInteger oldColor;
 
 @end
 
@@ -127,6 +127,16 @@ static NSString * titleCellId = @"TitleCell";
     self.data =  [NSMutableArray arrayWithCapacity:10];
     [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
     
+    self.colors = [NSMutableArray arrayWithCapacity:10];
+    for (int i = 0; i < self.data.count; i++) {
+        if (i == 0) {
+            [self.colors addObject:@"1"];
+        }else {
+            [self.colors addObject:@"0"];
+        }
+    }
+    
+    self.oldColor = 0;
     
     longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(clickLongPress:)];
     [self.titleScroll addGestureRecognizer:longPress];
@@ -174,6 +184,25 @@ static NSString * titleCellId = @"TitleCell";
 
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+
+    int x = scrollView.contentOffset.x;
+    if (x % 375 == 0 && self.collectionView == scrollView) {
+
+        int i = x /375;
+
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        
+        if (self.oldColor != i) {
+            [self.colors exchangeObjectAtIndex:self.oldColor withObjectAtIndex:i];
+            self.oldColor = i;
+        }
+        [self.titleScroll reloadData];
+    }
+    
+}
+
 - (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
 
     [self.data exchangeObjectAtIndex:sourceIndexPath.item withObjectAtIndex:destinationIndexPath.item];
@@ -189,9 +218,9 @@ static NSString * titleCellId = @"TitleCell";
         
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-
-    }else {
-    
+        [self.colors exchangeObjectAtIndex:self.oldColor withObjectAtIndex:indexPath.item];
+        self.oldColor = indexPath.item;
+        [self.titleScroll reloadData];
     }
     
 }
@@ -205,14 +234,14 @@ static NSString * titleCellId = @"TitleCell";
         ViewCell *customcell =(ViewCell *)cell;
         [customcell loadDataWithIndex:indexPath.item];
         
-    }else {
-//        TitleCell *customcell =(TitleCell *)cell;
-
     }
     
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString * cellId = @"ViewCell";
+    static NSString * titleCellId = @"TitleCell";
     
     if (collectionView == self.collectionView) {
         
@@ -223,6 +252,7 @@ static NSString * titleCellId = @"TitleCell";
         
         TitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:titleCellId forIndexPath:indexPath];
         cell.msg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
+        cell.color = self.colors[indexPath.item];
         return cell;
         
     }
