@@ -26,6 +26,8 @@ static NSString * titleCellId = @"TitleCell";
 
 @property (nonatomic ) NSInteger currentIndex;
 
+@property (nonatomic ) BOOL isRemove;
+
 @end
 
 @implementation ViewController
@@ -177,7 +179,11 @@ static NSString * titleCellId = @"TitleCell";
     
     NSIndexPath *selectIndexPath = [self.titleScroll indexPathForItemAtPoint:[tap locationInView:self.titleScroll]];
     NSLog(@"delete %ld",(long)selectIndexPath.item);
-    [self deleteWithCollection:self.collectionView andIndex:selectIndexPath.item];
+    if (_isRemove) {
+        
+        [self deleteWithCollection:self.collectionView andIndex:selectIndexPath.item];
+        _isRemove = NO;
+    }
     
 }
 
@@ -245,8 +251,6 @@ static NSString * titleCellId = @"TitleCell";
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.currentIndex inSection:0];
     [self selectItemColorShowWith:indexPath];
 //    NSLog(@"%@",self.data);
- 
- 
 
 //    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
 
@@ -260,6 +264,7 @@ static NSString * titleCellId = @"TitleCell";
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
+        self.isRemove = YES;
     }
     
 }
