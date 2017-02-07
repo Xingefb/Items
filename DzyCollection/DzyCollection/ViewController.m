@@ -138,13 +138,15 @@ static NSString * titleCellId = @"TitleCell";
 
 - (IBAction)clickAdd:(UIButton *)sender {
 
-    [self addWithCollection:self.collectionView andIndex:0];
+    NSInteger random = arc4random() % 14;
+    [self addWithCollection:self.collectionView andIndex:random];
     
 }
 
 - (IBAction)clickDelete:(UIButton *)sender {
-
-    [self deleteWithCollection:self.collectionView andIndex:13];
+    
+    NSInteger random = arc4random() % 14;
+    [self deleteWithCollection:self.collectionView andIndex:random];
     
 }
 
