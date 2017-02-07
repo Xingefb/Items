@@ -10,6 +10,7 @@
 #import "ViewCell.h"
 #import "TitleCell.h"
 
+#import "TitleModel.h"
 
 
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -22,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic )NSMutableArray *data;
-@property (nonatomic )NSMutableArray *colors;
+
 @property (nonatomic ) NSInteger endIndex;
 @property (nonatomic ) NSInteger oldColor;
 
@@ -126,24 +127,15 @@
     
     self.data =  [NSMutableArray arrayWithCapacity:10];
     [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
-    
-    self.colors = [NSMutableArray arrayWithCapacity:10];
-    for (int i = 0; i < self.data.count; i++) {
-        if (i == 0) {
-            [self.colors addObject:@"1"];
-        }else {
-            [self.colors addObject:@"0"];
-        }
-    }
-    
     self.oldColor = 0;
-    
+
     longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(clickLongPress:)];
     [self.titleScroll addGestureRecognizer:longPress];
     
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickDoubleTap:)];
     [doubleTap setNumberOfTapsRequired:2];
     [self.titleScroll addGestureRecognizer:doubleTap];
+    
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -192,13 +184,17 @@
         int i = x /375;
 
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
+        NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:self.oldColor inSection:0];
+        [self.titleScroll reloadItemsAtIndexPaths:@[oldIndexPath]];
+        
         if (self.oldColor != i) {
-            [self.colors exchangeObjectAtIndex:self.oldColor withObjectAtIndex:i];
+            TitleCell *cell = (TitleCell *)[self.titleScroll cellForItemAtIndexPath:indexPath];
+            cell.selected = YES;
             self.oldColor = i;
         }
-        [self.titleScroll reloadData];
     }
     
 }
@@ -216,11 +212,20 @@
     
     if (collectionView == self.titleScroll) {
         
+        if (self.oldColor != indexPath.item) {
+            
+            NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:self.oldColor inSection:0];
+            [self.titleScroll reloadItemsAtIndexPaths:@[oldIndexPath]];
+            self.oldColor = indexPath.item;
+
+        }
+        
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        [self.colors exchangeObjectAtIndex:self.oldColor withObjectAtIndex:indexPath.item];
-        self.oldColor = indexPath.item;
-        [self.titleScroll reloadData];
+      
+        //TitleCell *cell = (TitleCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        //cell.selectedBackgroundView.backgroundColor = [UIColor orangeColor];
+        
     }
     
 }
@@ -249,13 +254,28 @@
         cell.theMsg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
         return cell;
     }else {
-        
+
         TitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:titleCellId forIndexPath:indexPath];
         cell.msg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
-        cell.color = self.colors[indexPath.item];
+
+        UIView* selectedBGView = [[UIView alloc] initWithFrame:cell.frame];
+        selectedBGView.backgroundColor = [UIColor orangeColor];
+        selectedBGView.layer.cornerRadius=4;
+        cell.selectedBackgroundView = selectedBGView;
+        
         return cell;
         
     }
+
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
 
 }
 

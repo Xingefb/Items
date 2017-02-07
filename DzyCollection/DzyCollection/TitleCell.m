@@ -17,17 +17,4 @@
 }
 
 
-
-- (void)setColors:(NSString *)color {
-
-    _color = color;
-    NSLog(@"%@",color);
-    if ([color isEqualToString:@"1"]) {
-        self.msg.backgroundColor = [UIColor orangeColor];
-    }else {
-        self.msg.backgroundColor = [UIColor blueColor];
-    }
-    
-}
-
 @end

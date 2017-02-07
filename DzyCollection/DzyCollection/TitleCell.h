@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TitleModel.h"
 @protocol TitleCellDelegate <NSObject>
 
 - (void)didClickCell:(UILabel *)label;
@@ -18,6 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *msg;
 
-@property (nonatomic ) NSString *color;
+@property (nonatomic ) TitleModel *model;
 
 @end
