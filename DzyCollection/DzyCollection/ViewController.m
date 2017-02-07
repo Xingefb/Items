@@ -37,28 +37,28 @@
 - (void)deleteWithCollection:(UICollectionView *)collectionView andIndex:(NSInteger )index {
    
     NSLog(@"%ld  %lu",(long)index,(unsigned long)self.data.count);
-    
-    NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index inSection:0];
-
-    [collectionView performBatchUpdates:^{
-        [self.data removeObjectAtIndex:index];
-        [collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-    } completion:^(BOOL finished) {
-        if (finished) {
-            
-            [self.titleScroll reloadData];
-            
-            if (index == self.data.count) {
-                NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index - 1 inSection:0];
-                [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-            }else {
-                [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-
+    if (self.data.count != 1) {
+        NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index inSection:0];
+        
+        [collectionView performBatchUpdates:^{
+            [self.data removeObjectAtIndex:index];
+            [collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+        } completion:^(BOOL finished) {
+            if (finished) {
+                
+                [self.titleScroll reloadData];
+                
+                if (index == self.data.count) {
+                    NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index - 1 inSection:0];
+                    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+                }else {
+                    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+                    
+                }
+                
             }
-            
-        }
-    }];
-
+        }];
+    }
 
 }
 
