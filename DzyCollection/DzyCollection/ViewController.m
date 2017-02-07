@@ -249,8 +249,8 @@
 
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
-        ViewCell *customcell =(ViewCell *)cell;
-        [customcell loadDataWithIndex:indexPath.item];
+        ViewCell *viewCell =(ViewCell *)cell;
+        [viewCell loadDataWithIndex:indexPath.item];
         
     }
     

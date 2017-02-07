@@ -7,17 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TitleModel.h"
-@protocol TitleCellDelegate <NSObject>
-
-- (void)didClickCell:(UILabel *)label;
-
-@end
 
 @interface TitleCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *msg;
-
-@property (nonatomic ) TitleModel *model;
 
 @end

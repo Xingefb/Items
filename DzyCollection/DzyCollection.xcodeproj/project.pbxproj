@@ -20,7 +20,6 @@
 		404EF3441E376533007A3D30 /* ViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF3431E376533007A3D30 /* ViewCell.m */; };
 		4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4072419E1E496ED200C4A89D /* ViewFlowLayout.m */; };
 		407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 407241A11E496EE000C4A89D /* TitleFlowLayout.m */; };
-		407241A51E496FA900C4A89D /* TitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 407241A41E496FA900C4A89D /* TitleModel.m */; };
 		40C516FF1E3875AC005E036E /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C516FE1E3875AC005E036E /* TitleCell.m */; };
 /* End PBXBuildFile section */
 
@@ -68,8 +67,6 @@
 		4072419E1E496ED200C4A89D /* ViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFlowLayout.m; sourceTree = "<group>"; };
 		407241A01E496EE000C4A89D /* TitleFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleFlowLayout.h; sourceTree = "<group>"; };
 		407241A11E496EE000C4A89D /* TitleFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleFlowLayout.m; sourceTree = "<group>"; };
-		407241A31E496FA900C4A89D /* TitleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleModel.h; sourceTree = "<group>"; };
-		407241A41E496FA900C4A89D /* TitleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleModel.m; sourceTree = "<group>"; };
 		40C516FD1E3875AC005E036E /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
 		40C516FE1E3875AC005E036E /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,8 +140,6 @@
 				4072419E1E496ED200C4A89D /* ViewFlowLayout.m */,
 				407241A01E496EE000C4A89D /* TitleFlowLayout.h */,
 				407241A11E496EE000C4A89D /* TitleFlowLayout.m */,
-				407241A31E496FA900C4A89D /* TitleModel.h */,
-				407241A41E496FA900C4A89D /* TitleModel.m */,
 			);
 			path = DzyCollection;
 			sourceTree = "<group>";
@@ -317,7 +312,6 @@
 				404EF3441E376533007A3D30 /* ViewCell.m in Sources */,
 				40C516FF1E3875AC005E036E /* TitleCell.m in Sources */,
 				407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */,
-				407241A51E496FA900C4A89D /* TitleModel.m in Sources */,
 				404EF33E1E376512007A3D30 /* OneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

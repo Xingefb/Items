@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *theMsg;
 
-
 - (void)loadDataWithIndex:(NSInteger )index;
 
 @end
