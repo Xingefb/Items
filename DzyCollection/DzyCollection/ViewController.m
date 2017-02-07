@@ -87,10 +87,6 @@
 
     [collectionView performBatchUpdates:^{
         
-        //NSString *old = self.data[oldIndex];
-        //NSString *new = self.data[newIndex];
-        //[self.data replaceObjectAtIndex:oldIndex withObject:new];
-        //[self.data replaceObjectAtIndex:newIndex withObject:old];
         [self.data exchangeObjectAtIndex:oldIndex withObjectAtIndex:newIndex];
         
         NSIndexPath *oldNum =[NSIndexPath indexPathForRow:oldIndex inSection:0];
@@ -99,8 +95,8 @@
 
     } completion:^(BOOL finished) {
         if (finished) {
-            [self.titleScroll reloadData];
             
+            [self.titleScroll reloadData];
             [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
             
         }
