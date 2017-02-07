@@ -25,7 +25,6 @@
 @property (nonatomic )NSMutableArray *data;
 
 @property (nonatomic ) NSInteger endIndex;
-@property (nonatomic ) NSInteger oldColor;
 
 @end
 
@@ -43,8 +42,10 @@
         [collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
     } completion:^(BOOL finished) {
         if (finished) {
+            
             [self.titleScroll reloadData];
             [self.collectionView reloadData];
+            
         }
     }];
 
@@ -127,7 +128,6 @@
     
     self.data =  [NSMutableArray arrayWithCapacity:10];
     [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
-    self.oldColor = 0;
 
     longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(clickLongPress:)];
     [self.titleScroll addGestureRecognizer:longPress];
@@ -137,14 +137,17 @@
     [self.titleScroll addGestureRecognizer:doubleTap];
     
     
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)clickDoubleTap:(UITapGestureRecognizer *)tap {
     
     NSIndexPath *selectIndexPath = [self.titleScroll indexPathForItemAtPoint:[tap locationInView:self.titleScroll]];
-    NSLog(@"%ld",(long)selectIndexPath.row);
-    [self deleteWithCollection:self.titleScroll andIndex:selectIndexPath.row];
+    NSLog(@"%ld",(long)selectIndexPath.item);
+    [self deleteWithCollection:self.titleScroll andIndex:selectIndexPath.item];
     
 }
 
@@ -175,26 +178,26 @@
     }
 
 }
-
+/*
+ [UIView animateWithDuration:0.1 animations:^{
+ CGRect rect = self.colorView.frame;
+ self.colorView.frame = CGRectMake(rect.origin.x + 50 , rect.origin.y, rect.size.width, rect.size.height);
+ }];
+ */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 
     int x = scrollView.contentOffset.x;
+
     if (x % 375 == 0 && self.collectionView == scrollView) {
 
         int i = x /375;
-
+        
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
 
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
-        NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:self.oldColor inSection:0];
-        [self.titleScroll reloadItemsAtIndexPaths:@[oldIndexPath]];
-        
-        if (self.oldColor != i) {
-            TitleCell *cell = (TitleCell *)[self.titleScroll cellForItemAtIndexPath:indexPath];
-            cell.selected = YES;
-            self.oldColor = i;
-        }
+        [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+
     }
     
 }
@@ -212,19 +215,10 @@
     
     if (collectionView == self.titleScroll) {
         
-        if (self.oldColor != indexPath.item) {
-            
-            NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:self.oldColor inSection:0];
-            [self.titleScroll reloadItemsAtIndexPaths:@[oldIndexPath]];
-            self.oldColor = indexPath.item;
-
-        }
-        
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-      
-        //TitleCell *cell = (TitleCell *)[collectionView cellForItemAtIndexPath:indexPath];
-        //cell.selectedBackgroundView.backgroundColor = [UIColor orangeColor];
+        
+        [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
         
     }
     
@@ -236,6 +230,7 @@
     if (collectionView == self.collectionView) {
 
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        
         ViewCell *customcell =(ViewCell *)cell;
         [customcell loadDataWithIndex:indexPath.item];
         
