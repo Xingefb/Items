@@ -10,9 +10,6 @@
 #import "ViewCell.h"
 #import "TitleCell.h"
 
-#import "TitleModel.h"
-
-
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
     UILongPressGestureRecognizer *longPress;
@@ -31,6 +28,8 @@
 @implementation ViewController
 
 - (IBAction)clickEdit:(UIButton *)sender {
+    
+    
     
 }
 
