@@ -47,12 +47,18 @@
         if (finished) {
             
             [self.titleScroll reloadData];
-            [self.collectionView reloadData];
             
-            [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            if (index == self.data.count) {
+                NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index - 1 inSection:0];
+                [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            }else {
+                [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
 
+            }
+            
         }
     }];
+
 
 }
 
@@ -164,8 +170,8 @@
 - (void)clickDoubleTap:(UITapGestureRecognizer *)tap {
     
     NSIndexPath *selectIndexPath = [self.titleScroll indexPathForItemAtPoint:[tap locationInView:self.titleScroll]];
-    NSLog(@"%ld",(long)selectIndexPath.item);
-    [self deleteWithCollection:self.titleScroll andIndex:selectIndexPath.item];
+    NSLog(@"delete %ld",(long)selectIndexPath.item);
+    [self deleteWithCollection:self.collectionView andIndex:selectIndexPath.item];
     
 }
 
@@ -269,11 +275,6 @@
 
         TitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:titleCellId forIndexPath:indexPath];
         cell.msg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
-
-        UIView* selectedBGView = [[UIView alloc] initWithFrame:cell.frame];
-        selectedBGView.backgroundColor = [UIColor orangeColor];
-        selectedBGView.layer.cornerRadius=4;
-        cell.selectedBackgroundView = selectedBGView;
         
         return cell;
         

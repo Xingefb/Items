@@ -13,12 +13,18 @@
 - (void)awakeFromNib {
 
     [super awakeFromNib];
+
     
 }
 
-- (void)setSelectedBackgroundView:(UIView *)selectedBackgroundView {
-    
-    [super setSelectedBackgroundView:selectedBackgroundView];
+- (void)setSelected:(BOOL)selected {
+
+    self.msg.layer.cornerRadius = 5;
+    if (selected) {
+        self.msg.backgroundColor = [UIColor greenColor];
+    }else {
+        self.msg.backgroundColor = [UIColor whiteColor];
+    }
     
 }
 
