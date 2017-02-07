@@ -24,7 +24,7 @@
 
 @property (nonatomic )NSMutableArray *data;
 
-@property (nonatomic ) NSInteger endIndex;
+@property (nonatomic ) NSInteger currentIndex;
 
 @end
 
@@ -35,10 +35,13 @@
 }
 
 - (void)deleteWithCollection:(UICollectionView *)collectionView andIndex:(NSInteger )index {
+   
+    NSLog(@"%ld  %lu",(long)index,(unsigned long)self.data.count);
+    
+    NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index inSection:0];
 
     [collectionView performBatchUpdates:^{
         [self.data removeObjectAtIndex:index];
-        NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index inSection:0];
         [collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
     } completion:^(BOOL finished) {
         if (finished) {
@@ -46,6 +49,8 @@
             [self.titleScroll reloadData];
             [self.collectionView reloadData];
             
+            [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+
         }
     }];
 
@@ -59,13 +64,20 @@
         [collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
     } completion:^(BOOL finished) {
         if (finished) {
+            
             [self.titleScroll reloadData];
+            
+            NSIndexPath *indexPath =[NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+            [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            
         }
     }];
     
 }
 
 - (void)moveWithCollection:(UICollectionView *)collectionView andOldIndex:(NSInteger )oldIndex andNewIndex:(NSInteger )newIndex {
+
+    NSIndexPath *indexPath =[NSIndexPath indexPathForRow:self.currentIndex inSection:0];
 
     [collectionView performBatchUpdates:^{
         
@@ -74,7 +86,7 @@
         //[self.data replaceObjectAtIndex:oldIndex withObject:new];
         //[self.data replaceObjectAtIndex:newIndex withObject:old];
         [self.data exchangeObjectAtIndex:oldIndex withObjectAtIndex:newIndex];
-
+        
         NSIndexPath *oldNum =[NSIndexPath indexPathForRow:oldIndex inSection:0];
         NSIndexPath *newNum =[NSIndexPath indexPathForRow:newIndex inSection:0];
         [collectionView moveItemAtIndexPath:oldNum toIndexPath:newNum];
@@ -82,18 +94,24 @@
     } completion:^(BOOL finished) {
         if (finished) {
             [self.titleScroll reloadData];
+            
+            [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            
         }
     }];
     
 }
 
 - (void)scrollWithCollection:(UICollectionView *)collectionView andIndex:(NSInteger )index andAnimation:(BOOL )animation {
-
+    
+    NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index inSection:0];
     [collectionView performBatchUpdates:^{
-        NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index inSection:0];
         [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     } completion:^(BOOL finished) {
         if (finished) {
+    
+            [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+
         }
     }];
     
@@ -136,8 +154,8 @@
     [doubleTap setNumberOfTapsRequired:2];
     [self.titleScroll addGestureRecognizer:doubleTap];
     
-    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    self.currentIndex = 0;
     [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -184,20 +202,17 @@
  self.colorView.frame = CGRectMake(rect.origin.x + 50 , rect.origin.y, rect.size.width, rect.size.height);
  }];
  */
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 
     int x = scrollView.contentOffset.x;
+    int i = x /375;
+    self.currentIndex = i;
 
     if (x % 375 == 0 && self.collectionView == scrollView) {
-
-        int i = x /375;
-        
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        
-        [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-
+        [self.titleScroll selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
     }
     
 }
@@ -209,16 +224,18 @@
     [self.titleScroll reloadData];
     [self.collectionView reloadData];
     
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.currentIndex inSection:0];
+    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    self.currentIndex = indexPath.item;
     if (collectionView == self.titleScroll) {
         
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        
-        [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
         
     }
     
@@ -261,16 +278,6 @@
         return cell;
         
     }
-
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
-
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
 
 }
 

@@ -16,5 +16,11 @@
     
 }
 
+- (void)setSelectedBackgroundView:(UIView *)selectedBackgroundView {
+    
+    [super setSelectedBackgroundView:selectedBackgroundView];
+    
+}
+
 
 @end
