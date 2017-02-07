@@ -10,6 +10,9 @@
 #import "ViewCell.h"
 #import "TitleCell.h"
 
+static NSString * cellId = @"ViewCell";
+static NSString * titleCellId = @"TitleCell";
+
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
     UILongPressGestureRecognizer *longPress;
@@ -36,7 +39,8 @@
 - (void)deleteWithCollection:(UICollectionView *)collectionView andIndex:(NSInteger )index {
    
     NSLog(@"%ld  %lu",(long)index,(unsigned long)self.data.count);
-    if (self.data.count != 1) {
+    if (self.data.count != 1 && index < self.data.count) {
+        
         NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index inSection:0];
         
         [collectionView performBatchUpdates:^{
@@ -49,12 +53,13 @@
                 
                 if (index == self.data.count) {
                     NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index - 1 inSection:0];
-                    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+                    [self selectItemColorShowWith:indexPath];
+
                 }else {
-                    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-                    
+                    [self selectItemColorShowWith:indexPath];
+
                 }
-                
+
             }
         }];
     }
@@ -73,7 +78,7 @@
             [self.titleScroll reloadData];
             
             NSIndexPath *indexPath =[NSIndexPath indexPathForRow:self.currentIndex inSection:0];
-            [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            [self selectItemColorShowWith:indexPath];
             
         }
     }];
@@ -96,7 +101,7 @@
         if (finished) {
             
             [self.titleScroll reloadData];
-            [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            [self selectItemColorShowWith:indexPath];
             
         }
     }];
@@ -110,8 +115,7 @@
         [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     } completion:^(BOOL finished) {
         if (finished) {
-    
-            [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            [self selectItemColorShowWith:indexPath];
 
         }
     }];
@@ -138,7 +142,7 @@
 
 - (IBAction)clickDelete:(UIButton *)sender {
 
-    [self deleteWithCollection:self.collectionView andIndex:3];
+    [self deleteWithCollection:self.collectionView andIndex:13];
     
 }
 
@@ -157,9 +161,16 @@
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     self.currentIndex = 0;
-    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    [self selectItemColorShowWith:indexPath];
     
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)selectItemColorShowWith:(NSIndexPath *)indexPath {
+
+    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+
 }
 
 - (void)clickDoubleTap:(UITapGestureRecognizer *)tap {
@@ -213,20 +224,31 @@
     if (x % 375 == 0 && self.collectionView == scrollView) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        [self.titleScroll selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+        [self selectItemColorShowWith:indexPath];
+
+//        [self.titleScroll selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
     }
     
 }
 
 - (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
 
-    [self.data exchangeObjectAtIndex:sourceIndexPath.item withObjectAtIndex:destinationIndexPath.item];
-//    NSLog(@"%@",self.data);
+    //取出源item数据
+    id objc = [self.data objectAtIndex:sourceIndexPath.item];
+    //从资源数组中移除该数据
+    [self.data removeObject:objc];
+    //将数据插入到资源数组中的目标位置上
+    [self.data insertObject:objc atIndex:destinationIndexPath.item];
+    
     [self.titleScroll reloadData];
     [self.collectionView reloadData];
-    
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.currentIndex inSection:0];
-    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    [self selectItemColorShowWith:indexPath];
+//    NSLog(@"%@",self.data);
+ 
+ 
+
+//    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
 
 }
 
@@ -257,9 +279,6 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString * cellId = @"ViewCell";
-    static NSString * titleCellId = @"TitleCell";
     
     if (collectionView == self.collectionView) {
         
