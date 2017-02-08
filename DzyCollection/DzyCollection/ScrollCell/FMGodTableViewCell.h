@@ -15,4 +15,11 @@ static NSString *GodCellScrollNotification = @"GodCellScrollNotification";
 @property (nonatomic,assign) BOOL isNotification;
 @property (nonatomic,retain) NSNotification *notification;
 
+@property (nonatomic ) UILabel *name;
+@property (nonatomic ) UILabel *code;
+@property (nonatomic ) UILabel *price;
+@property (nonatomic ) UILabel *quoteChange;
+@property (nonatomic ) UILabel *turnoverRate;
+@property (nonatomic ) UILabel *volume;
+
 @end

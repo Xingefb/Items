@@ -23,11 +23,13 @@
 
 - (void)loadDataWithIndex:(NSInteger)index {
     
+    // every time will show set the content offset is zero
+    [[NSNotificationCenter defaultCenter] postNotificationName:GodCellScrollNotification object:self userInfo:@{@"x":@(0)}];
+
     // if have data not load
     NSLog(@"will to load data %ld",(long)index);
-
+    
 }
-
 
 - (UIScrollView *)titleMenu {
 
@@ -37,7 +39,7 @@
         scroll.showsVerticalScrollIndicator = NO;
         scroll.showsHorizontalScrollIndicator = NO;
         scroll.bounces = NO;
-        scroll.contentSize = CGSizeMake(375 * 2, 60);
+        scroll.contentSize = CGSizeMake(375 / 2 * 3, 60);
         scroll.delegate = self;
         NSArray * strings = @[@"title1",@"title2",@"title3",@"title4",@"title5"];
         float w = scroll.contentSize.width / (strings.count);
@@ -90,6 +92,9 @@
         cell = [[FMGodTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
         
     }
+    // 设置分割线顶头显示
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.separatorInset = UIEdgeInsetsZero;
     
     [cell setClickTap:^{
         NSLog(@" - %ld",(long)indexPath.row);
@@ -98,6 +103,8 @@
     
     return cell;
 }
+
+
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 

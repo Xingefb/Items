@@ -29,6 +29,92 @@
     
 }
 
+- (UILabel *)name {
+    if (!_name) {
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 375 / 2, self.bounds.size.height/2)];
+        l.backgroundColor = [UIColor whiteColor];
+        l.text = @"name";
+        l.textAlignment = NSTextAlignmentLeft;
+        l.textColor = [UIColor blackColor];
+        l.font = [UIFont systemFontOfSize:16];
+        
+        _name = l;
+    }
+    return _name;
+}
+
+- (UILabel *)code {
+    if (!_code) {
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, self.bounds.size.height/2, 375 / 2, self.bounds.size.height/2)];
+        l.backgroundColor = [UIColor whiteColor];
+        l.text = @"code";
+        l.textAlignment = NSTextAlignmentLeft;
+        l.textColor = [UIColor grayColor];
+        l.font = [UIFont systemFontOfSize:12];
+        _code = l;
+    }
+    return _code;
+}
+
+- (UILabel *)price {
+    if (!_price) {
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(375 / 2, 0, 375 / 4, self.bounds.size.height)];
+        l.text = @"price";
+        l.textAlignment = NSTextAlignmentCenter;
+        l.textColor = [UIColor grayColor];
+        l.font = [UIFont systemFontOfSize:14];
+        _price = l;
+    }
+    return _price;
+}
+
+- (UILabel *)quoteChange {
+    if (!_quoteChange) {
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(375 / 4 * 3, 5, 375 / 4, self.bounds.size.height - 10)];
+        l.text = @"29.55%";
+        l.backgroundColor = [UIColor greenColor];
+        [l adjustsFontSizeToFitWidth];
+        l.layer.cornerRadius = 5;
+        l.layer.masksToBounds = YES;
+        l.textAlignment = NSTextAlignmentCenter;
+        l.textColor = [UIColor grayColor];
+        l.font = [UIFont systemFontOfSize:14];
+
+        _quoteChange = l;
+    }
+    return _quoteChange;
+}
+
+- (UILabel *)turnoverRate {
+
+    if (!_turnoverRate) {
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(375 , 0, 375 / 4, self.bounds.size.height)];
+        l.text = @"turnoverRate";
+        [l adjustsFontSizeToFitWidth];
+        l.textAlignment = NSTextAlignmentCenter;
+        l.textColor = [UIColor grayColor];
+        l.font = [UIFont systemFontOfSize:14];
+
+        _turnoverRate = l;
+    }
+    return _turnoverRate;
+
+}
+
+- (UILabel *)volume {
+    if (!_volume) {
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(375 / 4 * 5, 0, 375 / 4, self.bounds.size.height)];
+        l.text = @"volume";
+        [l adjustsFontSizeToFitWidth];
+        l.textAlignment = NSTextAlignmentCenter;
+        l.textColor = [UIColor grayColor];
+        l.font = [UIFont systemFontOfSize:14];
+
+        _volume = l;
+    }
+    return _volume;
+}
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self==[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -44,29 +130,19 @@
     _mainView.showsHorizontalScrollIndicator = NO;
     _mainView.showsVerticalScrollIndicator = NO;
     _mainView.bounces = NO;
-    _mainView.contentSize = CGSizeMake(2*_mainView.frame.size.width, self.bounds.size.height);
+    _mainView.contentSize = CGSizeMake(375 / 2 * 3, self.bounds.size.height);
     _mainView.delegate = self;
     //_mainView.directionalLockEnabled = YES;
     [self.contentView addSubview:_mainView];
-    NSArray * strings = @[@"左边标题",@"2",@"3",@"4",@"5"];
-    float w = _mainView.contentSize.width / (strings.count);
-    float x = _mainView.contentSize.width-w;
-    int counts = (int)strings.count-1;
-    for (int i=counts;i>=0;i--) {
-   
-        NSString *str = strings[i];
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(x, 0, w, self.bounds.size.height)];
-        [_mainView addSubview:l];
-//        l.layer.borderColor = [UIColor colorWithRed:0.01 green:0.01 blue:0.01 alpha:0.3].CGColor;
-//        l.layer.borderWidth = 0.5;
-        l.backgroundColor = [UIColor whiteColor];
-        l.text = str;
-        l.textAlignment = NSTextAlignmentCenter;
-        l = nil;
-        x -= w;
-        
-    }
+
+    [_mainView addSubview:self.price];
+    [_mainView addSubview:self.quoteChange];
+    [_mainView addSubview:self.turnoverRate];
+    [_mainView addSubview:self.volume];
     
+    [_mainView addSubview:self.code];
+    [_mainView addSubview:self.name];
+
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTap:)];
     [self.contentView addGestureRecognizer:tap];
     
@@ -102,15 +178,25 @@
         // 发送通知
         [[NSNotificationCenter defaultCenter] postNotificationName:GodCellScrollNotification object:self userInfo:@{@"x":@(scrollView.contentOffset.x)}];
     }
+    
     // 控制第一个不发生变化
     NSArray *views = scrollView.subviews;
     UIView *first = views.lastObject;
-    CGRect frame = first.frame;
-    frame.origin.x = scrollView.contentOffset.x;
-    first.frame = frame;
+    UIView *first1 = views[views.count-2];
+    [self fixedView:first andScrollView:scrollView];
+    [self fixedView:first1 andScrollView:scrollView];
+    
     //[scrollView bringSubviewToFront:first];
     _isNotification = NO;
     
+}
+// set fixed view
+- (void)fixedView:(UIView *)view andScrollView:(UIScrollView *)scrollView {
+
+    CGRect frame = view.frame;
+    frame.origin.x = scrollView.contentOffset.x;
+    view.frame = frame;
+
 }
 
 -(void)scrollMove:(NSNotification*)notification{
