@@ -154,7 +154,7 @@ static NSString * titleCellId = @"TitleCell";
 }
 
 - (IBAction)clickScroll:(UIButton *)sender {
-    NSInteger random = arc4random() % 14;
+    NSInteger random = arc4random() % 7;
     [self scrollWithCollection:self.collectionView andIndex:random andAnimation:NO];
     
 }
@@ -167,14 +167,14 @@ static NSString * titleCellId = @"TitleCell";
 
 - (IBAction)clickAdd:(UIButton *)sender {
 
-    NSInteger random = arc4random() % 14;
+    NSInteger random = arc4random() % 7;
     [self addWithCollection:self.collectionView andIndex:random];
     
 }
 
 - (IBAction)clickDelete:(UIButton *)sender {
     
-    NSInteger random = arc4random() % 14;
+    NSInteger random = arc4random() % 7;
     [self deleteWithCollection:self.collectionView andIndex:random];
     
 }

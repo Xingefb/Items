@@ -39,7 +39,7 @@
     [self.clickButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.clickButton];
     
-    self.backBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_SIZE.width - 50, 0, 40, 40)];
+    self.backBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_SIZE.width - 40, 0, 40, 40)];
     self.backBtn.backgroundColor = [UIColor redColor];
     [self.backBtn addTarget:self action:@selector(backToView:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.backBtn];
