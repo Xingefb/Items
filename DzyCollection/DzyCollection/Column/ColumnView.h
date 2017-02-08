@@ -10,8 +10,8 @@
 
 @protocol ColumnViewDelegate <NSObject>
 
-- (void)reloadingData;
-- (void)reloadingDataWithNumber:(NSInteger )number;
+- (void)reloadingDataWith:(NSMutableArray *)data;
+- (void)reloadingDataWithNumber:(NSInteger )number andData:(NSMutableArray *)data;
 
 @end
 

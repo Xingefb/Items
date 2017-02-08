@@ -10,19 +10,24 @@
 #import "ViewCell.h"
 #import "TitleCell.h"
 
+#import "ColumnView.h"
+
+
 static NSString * cellId = @"ViewCell";
 static NSString * titleCellId = @"TitleCell";
 
-@interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ColumnViewDelegate>
 {
     UILongPressGestureRecognizer *longPress;
 }
 
+@property (nonatomic ) ColumnView *columnView;
 @property (weak, nonatomic) IBOutlet UICollectionView *titleScroll;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic )NSMutableArray *data;
+@property (nonatomic )NSMutableArray *data1;
 
 @property (nonatomic ) NSInteger currentIndex;
 
@@ -32,14 +37,33 @@ static NSString * titleCellId = @"TitleCell";
 
 @implementation ViewController
 
-- (IBAction)clickEdit:(UIButton *)sender {
+- (void)backToLoadWith:(NSMutableArray *)data {
 
-    NSArray *data = [[self.data reverseObjectEnumerator] allObjects];
-    self.data = (NSMutableArray *)data;
+    self.data = data;
     [self.titleScroll reloadData];
     [self.collectionView reloadData];
     NSIndexPath *indexPath =[NSIndexPath indexPathForRow:self.currentIndex inSection:0];
     [self selectItemColorShowWith:indexPath];
+    
+}
+
+#pragma mark ColumnViewDelegate
+- (void)reloadingDataWithNumber:(NSInteger)number andData:(NSMutableArray *)data{
+    
+    self.currentIndex = number;
+    [self backToLoadWith:data];
+
+}
+
+- (void)reloadingDataWith:(NSMutableArray *)data {
+    
+    [self backToLoadWith:data];
+    
+}
+
+- (IBAction)clickEdit:(UIButton *)sender {
+
+    self.columnView.hidden = NO;
     
 }
 
@@ -155,11 +179,26 @@ static NSString * titleCellId = @"TitleCell";
     
 }
 
+- (ColumnView *)columnView {
+
+    if (!_columnView) {
+        ColumnView *view = [[ColumnView alloc] initWithFrame:CGRectMake(0, 70, 375, 400) andSelectedArray:self.data andOptionalArray:self.data1];
+        view.backgroundColor = [UIColor whiteColor];
+        view.delegate = self;
+        view.hidden = YES;
+        _columnView = view;
+    }
+    return _columnView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.data =  [NSMutableArray arrayWithCapacity:10];
-    [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
+    self.data1 =  [NSMutableArray arrayWithCapacity:10];
+
+    [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7"]];
+    [self.data1 addObjectsFromArray:@[@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
 
     longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(clickLongPress:)];
     [self.titleScroll addGestureRecognizer:longPress];
@@ -171,6 +210,9 @@ static NSString * titleCellId = @"TitleCell";
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     self.currentIndex = 0;
     [self selectItemColorShowWith:indexPath];
+    
+    //TODO: edit view
+    [self.view addSubview:self.columnView];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -287,11 +329,11 @@ static NSString * titleCellId = @"TitleCell";
         ViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
         cell.theMsg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
         return cell;
+        
     }else {
 
         TitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:titleCellId forIndexPath:indexPath];
         cell.msg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
-        
         return cell;
         
     }

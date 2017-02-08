@@ -168,8 +168,8 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
     if (indexPath.section == 0) {
         
         self.hidden = YES;
-        if (self.delegate && [self.delegate respondsToSelector:@selector(reloadingDataWithNumber:)]) {
-            [self.delegate reloadingDataWithNumber:indexPath.item];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(reloadingDataWithNumber:andData:)]) {
+            [self.delegate reloadingDataWithNumber:indexPath.item andData:self.selectedArray];
         }
 
     }
@@ -291,8 +291,8 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
             [reusableView setBackButton:^{
                 weakSelf.hidden = YES;
                 
-                if (self.delegate && [self.delegate respondsToSelector:@selector(reloadingData)]) {
-                    [self.delegate reloadingData];
+                if (self.delegate && [self.delegate respondsToSelector:@selector(reloadingDataWith:)]) {
+                    [self.delegate reloadingDataWith:self.selectedArray];
                 }
                 
             }];
