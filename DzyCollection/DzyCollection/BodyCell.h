@@ -1,5 +1,5 @@
 //
-//  ViewCell.h
+//  BodyCell.h
 //  DzyCollection
 //
 //  Created by Dzy on 24/01/2017.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewCell : UICollectionViewCell
+@interface BodyCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *theMsg;
 

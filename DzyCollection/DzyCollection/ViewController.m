@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "ViewCell.h"
+#import "BodyCell.h"
 #import "TitleCell.h"
 
 #import "ColumnView.h"
@@ -15,7 +15,7 @@
 #define SWidth [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height
 
-static NSString * cellId = @"ViewCell";
+static NSString * cellId = @"BodyCell";
 static NSString * titleCellId = @"TitleCell";
 
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ColumnViewDelegate>
@@ -317,7 +317,7 @@ static NSString * titleCellId = @"TitleCell";
 
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
-        ViewCell *viewCell =(ViewCell *)cell;
+        BodyCell *viewCell =(BodyCell *)cell;
         [viewCell loadDataWithIndex:indexPath.item];
         
     }
@@ -328,7 +328,7 @@ static NSString * titleCellId = @"TitleCell";
     
     if (collectionView == self.collectionView) {
         
-        ViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+        BodyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
         cell.theMsg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
         return cell;
         

@@ -8,13 +8,13 @@
 
 #import "DzyCollectionViewController.h"
 
-#import "ViewCell.h"
+#import "BodyCell.h"
 #import "TitleCell.h"
 
 #import "ColumnView.h"
 
-static NSString * cellId = @"body";
-static NSString * titleCellId = @"title";
+static NSString * cellId = @"bodyCollectionViewCell";
+static NSString * titleCellId = @"titleCollectionViewCell";
 
 #define SWidth [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height
@@ -137,7 +137,7 @@ ColumnViewDelegate>
     [self.view addSubview:self.bodyView];
 
     [self.titleView registerClass:[TitleCell class] forCellWithReuseIdentifier:titleCellId];
-    [self.bodyView registerClass:[ViewCell class] forCellWithReuseIdentifier:cellId];
+    [self.bodyView registerClass:[BodyCell class] forCellWithReuseIdentifier:cellId];
 
     UIButton *editBtn = [[UIButton alloc] initWithFrame:CGRectMake(SWidth- 40 , 20, 40, 40)];
     [editBtn setTitle:@"edit" forState:UIControlStateNormal];
@@ -201,7 +201,7 @@ ColumnViewDelegate>
         
         [self.titleView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
-        ViewCell *viewCell =(ViewCell *)cell;
+        BodyCell *viewCell =(BodyCell *)cell;
         [viewCell loadDataWithIndex:indexPath.item];
         
     }
@@ -212,7 +212,7 @@ ColumnViewDelegate>
     
     if (collectionView == self.bodyView) {
         
-        ViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+        BodyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
         cell.theMsg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
         return cell;
         

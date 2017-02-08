@@ -1,19 +1,19 @@
 //
-//  ViewCell.m
+//  BodyCell.m
 //  DzyCollection
 //
 //  Created by Dzy on 24/01/2017.
 //  Copyright © 2017 Dzy. All rights reserved.
 //
 
-#import "ViewCell.h"
+#import "BodyCell.h"
 
 #import "FMGodTableView.h"
 
 #define SWidth [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height
 
-@interface ViewCell ()
+@interface BodyCell ()
 
 <UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -22,7 +22,7 @@
 @property (nonatomic ) NSMutableArray *data;
 @end
 
-@implementation ViewCell
+@implementation BodyCell
 
 - (void)loadDataWithIndex:(NSInteger)index {
     
