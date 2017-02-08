@@ -12,4 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *msg;
 
+@property (nonatomic ) UILabel *text;
+
+
 @end

@@ -29,6 +29,7 @@
 		40CF2BF11E4AE6FD0012D64F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CF2BEB1E4AE6FD0012D64F /* delete.png */; };
 		40CF2BFA1E4AF4AC0012D64F /* FMGodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BF71E4AF4AC0012D64F /* FMGodTableView.m */; };
 		40CF2BFB1E4AF4AC0012D64F /* FMGodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */; };
+		40CF2BFE1E4B1B330012D64F /* DzyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		40CF2BF71E4AF4AC0012D64F /* FMGodTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGodTableView.m; sourceTree = "<group>"; };
 		40CF2BF81E4AF4AC0012D64F /* FMGodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGodTableViewCell.h; sourceTree = "<group>"; };
 		40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGodTableViewCell.m; sourceTree = "<group>"; };
+		40CF2BFC1E4B1B330012D64F /* DzyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DzyCollectionViewController.h; sourceTree = "<group>"; };
+		40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DzyCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +171,8 @@
 				40CF2BDA1E4AC65C0012D64F /* EditFlowLayout.m */,
 				40CF2BDC1E4AC71A0012D64F /* EditCell.h */,
 				40CF2BDD1E4AC71A0012D64F /* EditCell.m */,
+				40CF2BFC1E4B1B330012D64F /* DzyCollectionViewController.h */,
+				40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */,
 			);
 			path = DzyCollection;
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 				40CF2BDE1E4AC71A0012D64F /* EditCell.m in Sources */,
 				404EF30B1E3744D9007A3D30 /* main.m in Sources */,
 				4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */,
+				40CF2BFE1E4B1B330012D64F /* DzyCollectionViewController.m in Sources */,
 				40CF2BEF1E4AE6FD0012D64F /* ColumnView.m in Sources */,
 				40CF2BEE1E4AE6FD0012D64F /* ColumnReusableView.m in Sources */,
 				40CF2BD81E4AC6080012D64F /* EditViewController.m in Sources */,

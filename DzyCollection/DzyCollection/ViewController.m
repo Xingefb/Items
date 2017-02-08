@@ -24,8 +24,8 @@ static NSString * titleCellId = @"TitleCell";
 }
 
 @property (nonatomic ) ColumnView *columnView;
-@property (weak, nonatomic) IBOutlet UICollectionView *titleScroll;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *titleScroll;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic )NSMutableArray *data;
