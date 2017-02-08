@@ -10,7 +10,6 @@
 
 @protocol ColumnViewDelegate <NSObject>
 
-- (void)reloadingDataWith:(NSMutableArray *)data;
 - (void)reloadingDataWithNumber:(NSInteger )number andData:(NSMutableArray *)data;
 
 @end
@@ -25,6 +24,8 @@
  *  可选的数据
  */
 @property (nonatomic, strong)NSMutableArray *optionalArray;
+
+@property (nonatomic ) NSInteger number;
 
 @property (nonatomic ) id<ColumnViewDelegate>delegate;
 

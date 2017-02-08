@@ -290,11 +290,11 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
             //hidden 
             [reusableView setBackButton:^{
                 weakSelf.hidden = YES;
-                
-                if (self.delegate && [self.delegate respondsToSelector:@selector(reloadingDataWith:)]) {
-                    [self.delegate reloadingDataWith:self.selectedArray];
+                NSLog(@" -- %ld",(long)self.number);
+
+                if (self.delegate && [self.delegate respondsToSelector:@selector(reloadingDataWithNumber:andData:)]) {
+                    [self.delegate reloadingDataWithNumber:self.number andData:self.selectedArray];
                 }
-                
             }];
             
             reusableView.titleLabel.text = @"已选栏目";
@@ -308,6 +308,7 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
     }
     return (UICollectionReusableView *)reusableView;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CoclumnCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
@@ -333,6 +334,14 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
     }
     return cell;
 }
+
+- (void)setNumber:(NSInteger)number {
+
+    _number = number;
+    NSLog(@" -- %ld",(long)number);
+
+}
+
 -(void)dealloc{
     NSLog(@"dealloc");
 }

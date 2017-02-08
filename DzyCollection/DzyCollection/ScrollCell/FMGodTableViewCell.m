@@ -206,7 +206,7 @@
     NSDictionary *xn = notification.userInfo;
     NSObject *obj = notification.object;
     float x = [xn[@"x"] floatValue];
-    NSLog(@"%f",x);
+
     if (obj!=self) {
         _isNotification = YES;
         [_mainView setContentOffset:CGPointMake(x, 0) animated:NO];

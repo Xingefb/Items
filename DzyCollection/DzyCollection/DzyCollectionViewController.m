@@ -56,16 +56,10 @@ ColumnViewDelegate>
     
 }
 
-- (void)reloadingDataWith:(NSMutableArray *)data {
-    
-    [self backToLoadWith:data];
-    
-}
-
 - (void)toEdit:(UIButton *)button {
 
     self.columnView.hidden = NO;
-
+    self.columnView.number = self.currentIndex;
 }
 
 - (void)selectItemColorShowWith:(NSIndexPath *)indexPath {
@@ -183,9 +177,12 @@ ColumnViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    //self.currentIndex = indexPath.item;
+    NSLog(@"select - %ld",(long)self.currentIndex);
     self.currentIndex = indexPath.item;
+
     if (collectionView == self.titleView) {
-        
+
         [self.bodyView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         [self.titleView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
