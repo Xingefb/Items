@@ -19,9 +19,6 @@
 		4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4072419E1E496ED200C4A89D /* ViewFlowLayout.m */; };
 		407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 407241A11E496EE000C4A89D /* TitleFlowLayout.m */; };
 		40C516FF1E3875AC005E036E /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C516FE1E3875AC005E036E /* TitleCell.m */; };
-		40CF2BD81E4AC6080012D64F /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BD71E4AC6080012D64F /* EditViewController.m */; };
-		40CF2BDB1E4AC65C0012D64F /* EditFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BDA1E4AC65C0012D64F /* EditFlowLayout.m */; };
-		40CF2BDE1E4AC71A0012D64F /* EditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BDD1E4AC71A0012D64F /* EditCell.m */; };
 		40CF2BED1E4AE6FD0012D64F /* CoclumnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BE41E4AE6FD0012D64F /* CoclumnCollectionViewCell.m */; };
 		40CF2BEE1E4AE6FD0012D64F /* ColumnReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BE61E4AE6FD0012D64F /* ColumnReusableView.m */; };
 		40CF2BEF1E4AE6FD0012D64F /* ColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BE81E4AE6FD0012D64F /* ColumnView.m */; };
@@ -74,12 +71,6 @@
 		407241A11E496EE000C4A89D /* TitleFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleFlowLayout.m; sourceTree = "<group>"; };
 		40C516FD1E3875AC005E036E /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
 		40C516FE1E3875AC005E036E /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
-		40CF2BD61E4AC6080012D64F /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
-		40CF2BD71E4AC6080012D64F /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
-		40CF2BD91E4AC65C0012D64F /* EditFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFlowLayout.h; sourceTree = "<group>"; };
-		40CF2BDA1E4AC65C0012D64F /* EditFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFlowLayout.m; sourceTree = "<group>"; };
-		40CF2BDC1E4AC71A0012D64F /* EditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCell.h; sourceTree = "<group>"; };
-		40CF2BDD1E4AC71A0012D64F /* EditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCell.m; sourceTree = "<group>"; };
 		40CF2BE31E4AE6FD0012D64F /* CoclumnCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoclumnCollectionViewCell.h; sourceTree = "<group>"; };
 		40CF2BE41E4AE6FD0012D64F /* CoclumnCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoclumnCollectionViewCell.m; sourceTree = "<group>"; };
 		40CF2BE51E4AE6FD0012D64F /* ColumnReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnReusableView.h; sourceTree = "<group>"; };
@@ -165,12 +156,6 @@
 				4072419E1E496ED200C4A89D /* ViewFlowLayout.m */,
 				407241A01E496EE000C4A89D /* TitleFlowLayout.h */,
 				407241A11E496EE000C4A89D /* TitleFlowLayout.m */,
-				40CF2BD61E4AC6080012D64F /* EditViewController.h */,
-				40CF2BD71E4AC6080012D64F /* EditViewController.m */,
-				40CF2BD91E4AC65C0012D64F /* EditFlowLayout.h */,
-				40CF2BDA1E4AC65C0012D64F /* EditFlowLayout.m */,
-				40CF2BDC1E4AC71A0012D64F /* EditCell.h */,
-				40CF2BDD1E4AC71A0012D64F /* EditCell.m */,
 				40CF2BFC1E4B1B330012D64F /* DzyCollectionViewController.h */,
 				40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */,
 			);
@@ -366,18 +351,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40CF2BDB1E4AC65C0012D64F /* EditFlowLayout.m in Sources */,
 				404EF3111E3744D9007A3D30 /* ViewController.m in Sources */,
 				40CF2BED1E4AE6FD0012D64F /* CoclumnCollectionViewCell.m in Sources */,
 				404EF30E1E3744D9007A3D30 /* AppDelegate.m in Sources */,
 				40CF2BF01E4AE6FD0012D64F /* ColumnViewController.m in Sources */,
-				40CF2BDE1E4AC71A0012D64F /* EditCell.m in Sources */,
 				404EF30B1E3744D9007A3D30 /* main.m in Sources */,
 				4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */,
 				40CF2BFE1E4B1B330012D64F /* DzyCollectionViewController.m in Sources */,
 				40CF2BEF1E4AE6FD0012D64F /* ColumnView.m in Sources */,
 				40CF2BEE1E4AE6FD0012D64F /* ColumnReusableView.m in Sources */,
-				40CF2BD81E4AC6080012D64F /* EditViewController.m in Sources */,
 				404EF3441E376533007A3D30 /* BodyCell.m in Sources */,
 				40C516FF1E3875AC005E036E /* TitleCell.m in Sources */,
 				407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */,
