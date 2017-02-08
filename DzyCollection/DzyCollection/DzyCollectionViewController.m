@@ -13,15 +13,16 @@
 
 #import "ColumnView.h"
 
-static NSString * cellId = @"ViewCell";
-static NSString * titleCellId = @"TitleCell";
+static NSString * cellId = @"body";
+static NSString * titleCellId = @"title";
 
 #define SWidth [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height
 
 @interface DzyCollectionViewController ()
 <UICollectionViewDelegate,
-UICollectionViewDataSource>
+UICollectionViewDataSource,
+ColumnViewDelegate>
 
 @property (nonatomic ) UICollectionView *titleView;
 @property (nonatomic ) UICollectionView *bodyView;
@@ -30,10 +31,42 @@ UICollectionViewDataSource>
 @property (nonatomic )NSMutableArray *sources;
 @property (nonatomic ) NSInteger currentIndex;
 
+@property (nonatomic ) ColumnView *columnView;
+
 @end
 
 @implementation DzyCollectionViewController
 
+
+- (void)backToLoadWith:(NSMutableArray *)data {
+    
+    self.data = data;
+    [self.titleView reloadData];
+    [self.bodyView reloadData];
+    NSIndexPath *indexPath =[NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+    [self selectItemColorShowWith:indexPath];
+    
+}
+
+#pragma mark ColumnViewDelegate
+- (void)reloadingDataWithNumber:(NSInteger)number andData:(NSMutableArray *)data{
+    
+    self.currentIndex = number;
+    [self backToLoadWith:data];
+    
+}
+
+- (void)reloadingDataWith:(NSMutableArray *)data {
+    
+    [self backToLoadWith:data];
+    
+}
+
+- (void)toEdit:(UIButton *)button {
+
+    self.columnView.hidden = NO;
+
+}
 
 - (void)selectItemColorShowWith:(NSIndexPath *)indexPath {
     
@@ -86,20 +119,38 @@ UICollectionViewDataSource>
     return _bodyView;
 }
 
+- (ColumnView *)columnView {
+    
+    if (!_columnView) {
+        ColumnView *view = [[ColumnView alloc] initWithFrame:CGRectMake(0, 20, SWidth, SHeight - 80) andSelectedArray:self.data andOptionalArray:self.sources];
+        view.backgroundColor = [UIColor whiteColor];
+        view.delegate = self;
+        view.hidden = YES;
+        _columnView = view;
+    }
+    return _columnView;
+}
+
 - (void)createUI {
     
     [self.view addSubview:self.titleView];
     [self.view addSubview:self.bodyView];
-    
+
     [self.titleView registerClass:[TitleCell class] forCellWithReuseIdentifier:titleCellId];
     [self.bodyView registerClass:[ViewCell class] forCellWithReuseIdentifier:cellId];
+
+    UIButton *editBtn = [[UIButton alloc] initWithFrame:CGRectMake(SWidth- 40 , 20, 40, 40)];
+    [editBtn setTitle:@"edit" forState:UIControlStateNormal];
+    editBtn.backgroundColor = [UIColor orangeColor];
+    [editBtn addTarget:self action:@selector(toEdit:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:editBtn];
+    
+    [self.view addSubview:self.columnView];
 
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self createUI];
     
     self.data =  [NSMutableArray arrayWithCapacity:10];
     self.sources =  [NSMutableArray arrayWithCapacity:10];
@@ -107,6 +158,8 @@ UICollectionViewDataSource>
     [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7"]];
     [self.sources addObjectsFromArray:@[@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
 
+    [self createUI];
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     self.currentIndex = 0;
     [self selectItemColorShowWith:indexPath];
