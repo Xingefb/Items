@@ -15,12 +15,18 @@
 		404EF3191E3744D9007A3D30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404EF3171E3744D9007A3D30 /* LaunchScreen.storyboard */; };
 		404EF3241E3744D9007A3D30 /* DzyCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF3231E3744D9007A3D30 /* DzyCollectionTests.m */; };
 		404EF32F1E3744DA007A3D30 /* DzyCollectionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF32E1E3744DA007A3D30 /* DzyCollectionUITests.m */; };
-		404EF33E1E376512007A3D30 /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF33D1E376512007A3D30 /* OneViewController.m */; };
-		404EF3411E37651A007A3D30 /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF3401E37651A007A3D30 /* TwoViewController.m */; };
 		404EF3441E376533007A3D30 /* ViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF3431E376533007A3D30 /* ViewCell.m */; };
 		4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4072419E1E496ED200C4A89D /* ViewFlowLayout.m */; };
 		407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 407241A11E496EE000C4A89D /* TitleFlowLayout.m */; };
 		40C516FF1E3875AC005E036E /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C516FE1E3875AC005E036E /* TitleCell.m */; };
+		40CF2BD81E4AC6080012D64F /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BD71E4AC6080012D64F /* EditViewController.m */; };
+		40CF2BDB1E4AC65C0012D64F /* EditFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BDA1E4AC65C0012D64F /* EditFlowLayout.m */; };
+		40CF2BDE1E4AC71A0012D64F /* EditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BDD1E4AC71A0012D64F /* EditCell.m */; };
+		40CF2BED1E4AE6FD0012D64F /* CoclumnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BE41E4AE6FD0012D64F /* CoclumnCollectionViewCell.m */; };
+		40CF2BEE1E4AE6FD0012D64F /* ColumnReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BE61E4AE6FD0012D64F /* ColumnReusableView.m */; };
+		40CF2BEF1E4AE6FD0012D64F /* ColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BE81E4AE6FD0012D64F /* ColumnView.m */; };
+		40CF2BF01E4AE6FD0012D64F /* ColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BEA1E4AE6FD0012D64F /* ColumnViewController.m */; };
+		40CF2BF11E4AE6FD0012D64F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CF2BEB1E4AE6FD0012D64F /* delete.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +63,6 @@
 		404EF32A1E3744DA007A3D30 /* DzyCollectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DzyCollectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		404EF32E1E3744DA007A3D30 /* DzyCollectionUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DzyCollectionUITests.m; sourceTree = "<group>"; };
 		404EF3301E3744DA007A3D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		404EF33C1E376512007A3D30 /* OneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneViewController.h; sourceTree = "<group>"; };
-		404EF33D1E376512007A3D30 /* OneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneViewController.m; sourceTree = "<group>"; };
-		404EF33F1E37651A007A3D30 /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
-		404EF3401E37651A007A3D30 /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		404EF3421E376533007A3D30 /* ViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCell.h; sourceTree = "<group>"; };
 		404EF3431E376533007A3D30 /* ViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCell.m; sourceTree = "<group>"; };
 		4072419D1E496ED200C4A89D /* ViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFlowLayout.h; sourceTree = "<group>"; };
@@ -69,6 +71,22 @@
 		407241A11E496EE000C4A89D /* TitleFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleFlowLayout.m; sourceTree = "<group>"; };
 		40C516FD1E3875AC005E036E /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
 		40C516FE1E3875AC005E036E /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
+		40CF2BD61E4AC6080012D64F /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		40CF2BD71E4AC6080012D64F /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		40CF2BD91E4AC65C0012D64F /* EditFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFlowLayout.h; sourceTree = "<group>"; };
+		40CF2BDA1E4AC65C0012D64F /* EditFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFlowLayout.m; sourceTree = "<group>"; };
+		40CF2BDC1E4AC71A0012D64F /* EditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCell.h; sourceTree = "<group>"; };
+		40CF2BDD1E4AC71A0012D64F /* EditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCell.m; sourceTree = "<group>"; };
+		40CF2BE31E4AE6FD0012D64F /* CoclumnCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoclumnCollectionViewCell.h; sourceTree = "<group>"; };
+		40CF2BE41E4AE6FD0012D64F /* CoclumnCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoclumnCollectionViewCell.m; sourceTree = "<group>"; };
+		40CF2BE51E4AE6FD0012D64F /* ColumnReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnReusableView.h; sourceTree = "<group>"; };
+		40CF2BE61E4AE6FD0012D64F /* ColumnReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnReusableView.m; sourceTree = "<group>"; };
+		40CF2BE71E4AE6FD0012D64F /* ColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnView.h; sourceTree = "<group>"; };
+		40CF2BE81E4AE6FD0012D64F /* ColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnView.m; sourceTree = "<group>"; };
+		40CF2BE91E4AE6FD0012D64F /* ColumnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnViewController.h; sourceTree = "<group>"; };
+		40CF2BEA1E4AE6FD0012D64F /* ColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnViewController.m; sourceTree = "<group>"; };
+		40CF2BEB1E4AE6FD0012D64F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		40CF2BEC1E4AE6FD0012D64F /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +137,7 @@
 		404EF3081E3744D9007A3D30 /* DzyCollection */ = {
 			isa = PBXGroup;
 			children = (
+				40CF2BE21E4AE6FD0012D64F /* Column */,
 				404EF30C1E3744D9007A3D30 /* AppDelegate.h */,
 				404EF30D1E3744D9007A3D30 /* AppDelegate.m */,
 				404EF30F1E3744D9007A3D30 /* ViewController.h */,
@@ -128,10 +147,6 @@
 				404EF3171E3744D9007A3D30 /* LaunchScreen.storyboard */,
 				404EF31A1E3744D9007A3D30 /* Info.plist */,
 				404EF3091E3744D9007A3D30 /* Supporting Files */,
-				404EF33C1E376512007A3D30 /* OneViewController.h */,
-				404EF33D1E376512007A3D30 /* OneViewController.m */,
-				404EF33F1E37651A007A3D30 /* TwoViewController.h */,
-				404EF3401E37651A007A3D30 /* TwoViewController.m */,
 				404EF3421E376533007A3D30 /* ViewCell.h */,
 				404EF3431E376533007A3D30 /* ViewCell.m */,
 				40C516FD1E3875AC005E036E /* TitleCell.h */,
@@ -140,6 +155,12 @@
 				4072419E1E496ED200C4A89D /* ViewFlowLayout.m */,
 				407241A01E496EE000C4A89D /* TitleFlowLayout.h */,
 				407241A11E496EE000C4A89D /* TitleFlowLayout.m */,
+				40CF2BD61E4AC6080012D64F /* EditViewController.h */,
+				40CF2BD71E4AC6080012D64F /* EditViewController.m */,
+				40CF2BD91E4AC65C0012D64F /* EditFlowLayout.h */,
+				40CF2BDA1E4AC65C0012D64F /* EditFlowLayout.m */,
+				40CF2BDC1E4AC71A0012D64F /* EditCell.h */,
+				40CF2BDD1E4AC71A0012D64F /* EditCell.m */,
 			);
 			path = DzyCollection;
 			sourceTree = "<group>";
@@ -168,6 +189,23 @@
 				404EF3301E3744DA007A3D30 /* Info.plist */,
 			);
 			path = DzyCollectionUITests;
+			sourceTree = "<group>";
+		};
+		40CF2BE21E4AE6FD0012D64F /* Column */ = {
+			isa = PBXGroup;
+			children = (
+				40CF2BE31E4AE6FD0012D64F /* CoclumnCollectionViewCell.h */,
+				40CF2BE41E4AE6FD0012D64F /* CoclumnCollectionViewCell.m */,
+				40CF2BE51E4AE6FD0012D64F /* ColumnReusableView.h */,
+				40CF2BE61E4AE6FD0012D64F /* ColumnReusableView.m */,
+				40CF2BE71E4AE6FD0012D64F /* ColumnView.h */,
+				40CF2BE81E4AE6FD0012D64F /* ColumnView.m */,
+				40CF2BE91E4AE6FD0012D64F /* ColumnViewController.h */,
+				40CF2BEA1E4AE6FD0012D64F /* ColumnViewController.m */,
+				40CF2BEB1E4AE6FD0012D64F /* delete.png */,
+				40CF2BEC1E4AE6FD0012D64F /* Header.h */,
+			);
+			path = Column;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40CF2BF11E4AE6FD0012D64F /* delete.png in Resources */,
 				404EF3191E3744D9007A3D30 /* LaunchScreen.storyboard in Resources */,
 				404EF3161E3744D9007A3D30 /* Assets.xcassets in Resources */,
 				404EF3141E3744D9007A3D30 /* Main.storyboard in Resources */,
@@ -304,15 +343,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40CF2BDB1E4AC65C0012D64F /* EditFlowLayout.m in Sources */,
 				404EF3111E3744D9007A3D30 /* ViewController.m in Sources */,
+				40CF2BED1E4AE6FD0012D64F /* CoclumnCollectionViewCell.m in Sources */,
 				404EF30E1E3744D9007A3D30 /* AppDelegate.m in Sources */,
+				40CF2BF01E4AE6FD0012D64F /* ColumnViewController.m in Sources */,
+				40CF2BDE1E4AC71A0012D64F /* EditCell.m in Sources */,
 				404EF30B1E3744D9007A3D30 /* main.m in Sources */,
-				404EF3411E37651A007A3D30 /* TwoViewController.m in Sources */,
 				4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */,
+				40CF2BEF1E4AE6FD0012D64F /* ColumnView.m in Sources */,
+				40CF2BEE1E4AE6FD0012D64F /* ColumnReusableView.m in Sources */,
+				40CF2BD81E4AC6080012D64F /* EditViewController.m in Sources */,
 				404EF3441E376533007A3D30 /* ViewCell.m in Sources */,
 				40C516FF1E3875AC005E036E /* TitleCell.m in Sources */,
 				407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */,
-				404EF33E1E376512007A3D30 /* OneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

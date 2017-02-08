@@ -33,8 +33,13 @@ static NSString * titleCellId = @"TitleCell";
 @implementation ViewController
 
 - (IBAction)clickEdit:(UIButton *)sender {
-    
-    
+
+    NSArray *data = [[self.data reverseObjectEnumerator] allObjects];
+    self.data = (NSMutableArray *)data;
+    [self.titleScroll reloadData];
+    [self.collectionView reloadData];
+    NSIndexPath *indexPath =[NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+    [self selectItemColorShowWith:indexPath];
     
 }
 
@@ -216,12 +221,6 @@ static NSString * titleCellId = @"TitleCell";
     }
 
 }
-/*
- [UIView animateWithDuration:0.1 animations:^{
- CGRect rect = self.colorView.frame;
- self.colorView.frame = CGRectMake(rect.origin.x + 50 , rect.origin.y, rect.size.width, rect.size.height);
- }];
- */
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 
@@ -233,8 +232,6 @@ static NSString * titleCellId = @"TitleCell";
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         [self selectItemColorShowWith:indexPath];
-
-//        [self.titleScroll selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
     }
     
 }
@@ -253,8 +250,6 @@ static NSString * titleCellId = @"TitleCell";
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.currentIndex inSection:0];
     [self selectItemColorShowWith:indexPath];
 //    NSLog(@"%@",self.data);
-
-//    [self.titleScroll selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
 
 }
 
