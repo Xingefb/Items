@@ -8,6 +8,9 @@
 
 #import "FMGodTableViewCell.h"
 
+#define SWidth [UIScreen mainScreen].bounds.size.width
+#define SHeight [UIScreen mainScreen].bounds.size.height
+
 @implementation FMGodTableViewCell
 
 - (void)awakeFromNib {
@@ -31,9 +34,9 @@
 
 - (UILabel *)name {
     if (!_name) {
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 375 / 2, self.bounds.size.height/2)];
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SWidth / 2, self.bounds.size.height/2)];
         l.backgroundColor = [UIColor whiteColor];
-        l.text = @"name";
+        l.text = @"   name";
         l.textAlignment = NSTextAlignmentLeft;
         l.textColor = [UIColor blackColor];
         l.font = [UIFont systemFontOfSize:16];
@@ -45,9 +48,9 @@
 
 - (UILabel *)code {
     if (!_code) {
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, self.bounds.size.height/2, 375 / 2, self.bounds.size.height/2)];
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, self.bounds.size.height/2, SWidth / 2, self.bounds.size.height/2)];
         l.backgroundColor = [UIColor whiteColor];
-        l.text = @"code";
+        l.text = @"   code";
         l.textAlignment = NSTextAlignmentLeft;
         l.textColor = [UIColor grayColor];
         l.font = [UIFont systemFontOfSize:12];
@@ -58,7 +61,7 @@
 
 - (UILabel *)price {
     if (!_price) {
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(375 / 2, 0, 375 / 4, self.bounds.size.height)];
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(SWidth / 2, 0, SWidth / 4, self.bounds.size.height)];
         l.text = @"price";
         l.textAlignment = NSTextAlignmentCenter;
         l.textColor = [UIColor grayColor];
@@ -70,7 +73,7 @@
 
 - (UILabel *)quoteChange {
     if (!_quoteChange) {
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(375 / 4 * 3, 5, 375 / 4, self.bounds.size.height - 10)];
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(SWidth / 4 * 3, 5, SWidth / 4 - 10, self.bounds.size.height - 10)];
         l.text = @"29.55%";
         l.backgroundColor = [UIColor greenColor];
         [l adjustsFontSizeToFitWidth];
@@ -88,8 +91,8 @@
 - (UILabel *)turnoverRate {
 
     if (!_turnoverRate) {
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(375 , 0, 375 / 4, self.bounds.size.height)];
-        l.text = @"turnoverRate";
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(SWidth , 0, SWidth / 4, self.bounds.size.height)];
+        l.text = @"turnover";
         [l adjustsFontSizeToFitWidth];
         l.textAlignment = NSTextAlignmentCenter;
         l.textColor = [UIColor grayColor];
@@ -103,7 +106,7 @@
 
 - (UILabel *)volume {
     if (!_volume) {
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(375 / 4 * 5, 0, 375 / 4, self.bounds.size.height)];
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(SWidth / 4 * 5, 0, SWidth / 4, self.bounds.size.height)];
         l.text = @"volume";
         [l adjustsFontSizeToFitWidth];
         l.textAlignment = NSTextAlignmentCenter;
@@ -130,7 +133,7 @@
     _mainView.showsHorizontalScrollIndicator = NO;
     _mainView.showsVerticalScrollIndicator = NO;
     _mainView.bounces = NO;
-    _mainView.contentSize = CGSizeMake(375 / 2 * 3, self.bounds.size.height);
+    _mainView.contentSize = CGSizeMake(SWidth / 2 * 3, self.bounds.size.height);
     _mainView.delegate = self;
     //_mainView.directionalLockEnabled = YES;
     [self.contentView addSubview:_mainView];

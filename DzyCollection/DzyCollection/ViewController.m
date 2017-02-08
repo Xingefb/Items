@@ -12,6 +12,8 @@
 
 #import "ColumnView.h"
 
+#define SWidth [UIScreen mainScreen].bounds.size.width
+#define SHeight [UIScreen mainScreen].bounds.size.height
 
 static NSString * cellId = @"ViewCell";
 static NSString * titleCellId = @"TitleCell";
@@ -182,7 +184,7 @@ static NSString * titleCellId = @"TitleCell";
 - (ColumnView *)columnView {
 
     if (!_columnView) {
-        ColumnView *view = [[ColumnView alloc] initWithFrame:CGRectMake(0, 70, 375, 400) andSelectedArray:self.data andOptionalArray:self.data1];
+        ColumnView *view = [[ColumnView alloc] initWithFrame:CGRectMake(0, 70, SWidth, 400) andSelectedArray:self.data andOptionalArray:self.data1];
         view.backgroundColor = [UIColor whiteColor];
         view.delegate = self;
         view.hidden = YES;
@@ -267,10 +269,10 @@ static NSString * titleCellId = @"TitleCell";
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 
     int x = scrollView.contentOffset.x;
-    int i = x /375;
+    int i = x /SWidth;
     self.currentIndex = i;
-
-    if (x % 375 == 0 && self.collectionView == scrollView) {
+    int sw = SWidth;
+    if (x % sw == 0 && self.collectionView == scrollView) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         [self selectItemColorShowWith:indexPath];
