@@ -14,4 +14,7 @@
 
 - (void)loadDataWithIndex:(NSInteger )index;
 
+@property (nonatomic,assign) float CellLastScrollX; // 最后的cell的移动距离
+
+
 @end

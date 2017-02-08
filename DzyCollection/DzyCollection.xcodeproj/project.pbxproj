@@ -27,6 +27,8 @@
 		40CF2BEF1E4AE6FD0012D64F /* ColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BE81E4AE6FD0012D64F /* ColumnView.m */; };
 		40CF2BF01E4AE6FD0012D64F /* ColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BEA1E4AE6FD0012D64F /* ColumnViewController.m */; };
 		40CF2BF11E4AE6FD0012D64F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CF2BEB1E4AE6FD0012D64F /* delete.png */; };
+		40CF2BFA1E4AF4AC0012D64F /* FMGodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BF71E4AF4AC0012D64F /* FMGodTableView.m */; };
+		40CF2BFB1E4AF4AC0012D64F /* FMGodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,10 @@
 		40CF2BEA1E4AE6FD0012D64F /* ColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnViewController.m; sourceTree = "<group>"; };
 		40CF2BEB1E4AE6FD0012D64F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		40CF2BEC1E4AE6FD0012D64F /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		40CF2BF61E4AF4AC0012D64F /* FMGodTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGodTableView.h; sourceTree = "<group>"; };
+		40CF2BF71E4AF4AC0012D64F /* FMGodTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGodTableView.m; sourceTree = "<group>"; };
+		40CF2BF81E4AF4AC0012D64F /* FMGodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGodTableViewCell.h; sourceTree = "<group>"; };
+		40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGodTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 		404EF3081E3744D9007A3D30 /* DzyCollection */ = {
 			isa = PBXGroup;
 			children = (
+				40CF2BF51E4AF4AC0012D64F /* ScrollCell */,
 				40CF2BE21E4AE6FD0012D64F /* Column */,
 				404EF30C1E3744D9007A3D30 /* AppDelegate.h */,
 				404EF30D1E3744D9007A3D30 /* AppDelegate.m */,
@@ -206,6 +213,17 @@
 				40CF2BEC1E4AE6FD0012D64F /* Header.h */,
 			);
 			path = Column;
+			sourceTree = "<group>";
+		};
+		40CF2BF51E4AF4AC0012D64F /* ScrollCell */ = {
+			isa = PBXGroup;
+			children = (
+				40CF2BF61E4AF4AC0012D64F /* FMGodTableView.h */,
+				40CF2BF71E4AF4AC0012D64F /* FMGodTableView.m */,
+				40CF2BF81E4AF4AC0012D64F /* FMGodTableViewCell.h */,
+				40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */,
+			);
+			path = ScrollCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +375,8 @@
 				404EF3441E376533007A3D30 /* ViewCell.m in Sources */,
 				40C516FF1E3875AC005E036E /* TitleCell.m in Sources */,
 				407241A21E496EE000C4A89D /* TitleFlowLayout.m in Sources */,
+				40CF2BFA1E4AF4AC0012D64F /* FMGodTableView.m in Sources */,
+				40CF2BFB1E4AF4AC0012D64F /* FMGodTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
