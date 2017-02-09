@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AE46AC9DD9F95A98ED3ABE2 /* libPods-DzyCollection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5288B263019FA54BD859D62A /* libPods-DzyCollection.a */; };
 		400A36651E4C0ACF006F003A /* DzyItemMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400A36641E4C0ACF006F003A /* DzyItemMenuView.m */; };
 		404EF30B1E3744D9007A3D30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF30A1E3744D9007A3D30 /* main.m */; };
 		404EF30E1E3744D9007A3D30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF30D1E3744D9007A3D30 /* AppDelegate.m */; };
@@ -28,6 +29,8 @@
 		40CF2BFA1E4AF4AC0012D64F /* FMGodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BF71E4AF4AC0012D64F /* FMGodTableView.m */; };
 		40CF2BFB1E4AF4AC0012D64F /* FMGodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */; };
 		40CF2BFE1E4B1B330012D64F /* DzyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */; };
+		4590A14E8FABA0E5E6CD8CA2 /* libPods-DzyCollectionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5479C73E6FF448774F88A7 /* libPods-DzyCollectionTests.a */; };
+		E294E24246363889754E716A /* libPods-DzyCollectionUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48224859BB37D8D24A9937E2 /* libPods-DzyCollectionUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10ECDE6EDACF2E3579BB76DE /* Pods-DzyCollectionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzyCollectionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DzyCollectionTests/Pods-DzyCollectionTests.release.xcconfig"; sourceTree = "<group>"; };
+		1119DE580B6A6CA830574FA1 /* Pods-DzyCollectionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzyCollectionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DzyCollectionUITests/Pods-DzyCollectionUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1C2D449D53352F03E424C9D9 /* Pods-DzyCollectionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzyCollectionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DzyCollectionTests/Pods-DzyCollectionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		400A36631E4C0ACF006F003A /* DzyItemMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DzyItemMenuView.h; sourceTree = "<group>"; };
 		400A36641E4C0ACF006F003A /* DzyItemMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DzyItemMenuView.m; sourceTree = "<group>"; };
 		404EF3061E3744D9007A3D30 /* DzyCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DzyCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +96,12 @@
 		40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGodTableViewCell.m; sourceTree = "<group>"; };
 		40CF2BFC1E4B1B330012D64F /* DzyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DzyCollectionViewController.h; sourceTree = "<group>"; };
 		40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DzyCollectionViewController.m; sourceTree = "<group>"; };
+		48224859BB37D8D24A9937E2 /* libPods-DzyCollectionUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DzyCollectionUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		510D5AF2048F254EECCAAC0A /* Pods-DzyCollection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzyCollection.release.xcconfig"; path = "Pods/Target Support Files/Pods-DzyCollection/Pods-DzyCollection.release.xcconfig"; sourceTree = "<group>"; };
+		5288B263019FA54BD859D62A /* libPods-DzyCollection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DzyCollection.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5479C73E6FF448774F88A7 /* libPods-DzyCollectionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DzyCollectionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73480A1D2EC72FF9B2A07249 /* Pods-DzyCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzyCollection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DzyCollection/Pods-DzyCollection.debug.xcconfig"; sourceTree = "<group>"; };
+		94C85DF6CB13F7D7F22AFDEC /* Pods-DzyCollectionUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzyCollectionUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DzyCollectionUITests/Pods-DzyCollectionUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE46AC9DD9F95A98ED3ABE2 /* libPods-DzyCollection.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4590A14E8FABA0E5E6CD8CA2 /* libPods-DzyCollectionTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,12 +125,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E294E24246363889754E716A /* libPods-DzyCollectionUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12AC4D66102BE60BCC1346CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5288B263019FA54BD859D62A /* libPods-DzyCollection.a */,
+				5A5479C73E6FF448774F88A7 /* libPods-DzyCollectionTests.a */,
+				48224859BB37D8D24A9937E2 /* libPods-DzyCollectionUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		161282BC9D4473D863A01D8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73480A1D2EC72FF9B2A07249 /* Pods-DzyCollection.debug.xcconfig */,
+				510D5AF2048F254EECCAAC0A /* Pods-DzyCollection.release.xcconfig */,
+				1C2D449D53352F03E424C9D9 /* Pods-DzyCollectionTests.debug.xcconfig */,
+				10ECDE6EDACF2E3579BB76DE /* Pods-DzyCollectionTests.release.xcconfig */,
+				1119DE580B6A6CA830574FA1 /* Pods-DzyCollectionUITests.debug.xcconfig */,
+				94C85DF6CB13F7D7F22AFDEC /* Pods-DzyCollectionUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		404EF2FD1E3744D9007A3D30 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +162,8 @@
 				404EF3221E3744D9007A3D30 /* DzyCollectionTests */,
 				404EF32D1E3744DA007A3D30 /* DzyCollectionUITests */,
 				404EF3071E3744D9007A3D30 /* Products */,
+				161282BC9D4473D863A01D8A /* Pods */,
+				12AC4D66102BE60BCC1346CB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,9 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 404EF3331E3744DA007A3D30 /* Build configuration list for PBXNativeTarget "DzyCollection" */;
 			buildPhases = (
+				D730DE16CC799DFFAD746C4D /* [CP] Check Pods Manifest.lock */,
 				404EF3021E3744D9007A3D30 /* Sources */,
 				404EF3031E3744D9007A3D30 /* Frameworks */,
 				404EF3041E3744D9007A3D30 /* Resources */,
+				75328585A39BADCA4B7CC9F4 /* [CP] Embed Pods Frameworks */,
+				E5EC18666ABDF13B5B5B82B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,9 +288,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 404EF3361E3744DA007A3D30 /* Build configuration list for PBXNativeTarget "DzyCollectionTests" */;
 			buildPhases = (
+				2085DD12AE13D5891969DD0D /* [CP] Check Pods Manifest.lock */,
 				404EF31B1E3744D9007A3D30 /* Sources */,
 				404EF31C1E3744D9007A3D30 /* Frameworks */,
 				404EF31D1E3744D9007A3D30 /* Resources */,
+				3CC6E14B413CEEA92DF019D9 /* [CP] Embed Pods Frameworks */,
+				B1C3850144A9CDB20ED33AD4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,9 +309,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 404EF3391E3744DA007A3D30 /* Build configuration list for PBXNativeTarget "DzyCollectionUITests" */;
 			buildPhases = (
+				A7DC7E42C3B7D5ADB77FCD84 /* [CP] Check Pods Manifest.lock */,
 				404EF3261E3744DA007A3D30 /* Sources */,
 				404EF3271E3744DA007A3D30 /* Frameworks */,
 				404EF3281E3744DA007A3D30 /* Resources */,
+				9C9BB6368E4AC1DB4369D9AA /* [CP] Embed Pods Frameworks */,
+				29E2D71A9D7F02F41F2798A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -350,6 +399,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2085DD12AE13D5891969DD0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		29E2D71A9D7F02F41F2798A8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DzyCollectionUITests/Pods-DzyCollectionUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CC6E14B413CEEA92DF019D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DzyCollectionTests/Pods-DzyCollectionTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75328585A39BADCA4B7CC9F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DzyCollection/Pods-DzyCollection-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C9BB6368E4AC1DB4369D9AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DzyCollectionUITests/Pods-DzyCollectionUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7DC7E42C3B7D5ADB77FCD84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B1C3850144A9CDB20ED33AD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DzyCollectionTests/Pods-DzyCollectionTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D730DE16CC799DFFAD746C4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E5EC18666ABDF13B5B5B82B4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DzyCollection/Pods-DzyCollection-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		404EF3021E3744D9007A3D30 /* Sources */ = {
@@ -515,6 +702,7 @@
 		};
 		404EF3341E3744DA007A3D30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73480A1D2EC72FF9B2A07249 /* Pods-DzyCollection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3CP5W9DM94;
@@ -528,6 +716,7 @@
 		};
 		404EF3351E3744DA007A3D30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 510D5AF2048F254EECCAAC0A /* Pods-DzyCollection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3CP5W9DM94;
@@ -541,6 +730,7 @@
 		};
 		404EF3371E3744DA007A3D30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C2D449D53352F03E424C9D9 /* Pods-DzyCollectionTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DzyCollectionTests/Info.plist;
@@ -553,6 +743,7 @@
 		};
 		404EF3381E3744DA007A3D30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10ECDE6EDACF2E3579BB76DE /* Pods-DzyCollectionTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DzyCollectionTests/Info.plist;
@@ -565,6 +756,7 @@
 		};
 		404EF33A1E3744DA007A3D30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1119DE580B6A6CA830574FA1 /* Pods-DzyCollectionUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = DzyCollectionUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -576,6 +768,7 @@
 		};
 		404EF33B1E3744DA007A3D30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94C85DF6CB13F7D7F22AFDEC /* Pods-DzyCollectionUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = DzyCollectionUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
