@@ -62,6 +62,8 @@ static NSString *LoadMessage = @"LoadMessage";
         
     }];
     
+    [self repeatLoad];
+    
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HHmm"];
     NSDate * date = [NSDate date];
