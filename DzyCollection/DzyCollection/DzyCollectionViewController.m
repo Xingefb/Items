@@ -30,8 +30,10 @@ ColumnViewDelegate>
 @property (nonatomic )NSMutableArray *data;
 @property (nonatomic )NSMutableArray *sources;
 @property (nonatomic ) NSInteger currentIndex;
+@property (nonatomic ) NSInteger cellIndex;
 
 @property (nonatomic ) ColumnView *columnView;
+
 
 @end
 
@@ -116,7 +118,7 @@ ColumnViewDelegate>
 - (ColumnView *)columnView {
     
     if (!_columnView) {
-        ColumnView *view = [[ColumnView alloc] initWithFrame:CGRectMake(0, 20, SWidth, SHeight - 80) andSelectedArray:self.data andOptionalArray:self.sources];
+        ColumnView *view = [[ColumnView alloc] initWithFrame:CGRectMake(0, 20, SWidth, SHeight - 60) andSelectedArray:self.data andOptionalArray:self.sources];
         view.backgroundColor = [UIColor whiteColor];
         view.delegate = self;
         view.hidden = YES;
@@ -186,9 +188,7 @@ ColumnViewDelegate>
         [self.titleView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
     }
-    
 }
-
 
 // can add animation
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -196,20 +196,27 @@ ColumnViewDelegate>
     if (collectionView == self.bodyView) {
         
         [self.titleView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        
-        BodyCell *viewCell =(BodyCell *)cell;
-        [viewCell loadDataWithIndex:indexPath.item];
-        
+//        NSLog(@"willDisplayCell %ld",(long)indexPath.item);
+        self.cellIndex = indexPath.item;
+
     }
+
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (self.cellIndex != indexPath.item && collectionView == self.bodyView) {
+//        NSLog(@"didEndDisplayingCell %ld",self.cellIndex);
+    }
+
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (collectionView == self.bodyView) {
-        
+        [collectionView cellForItemAtIndexPath:indexPath];
         BodyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-        cell.theMsg.text = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
+        cell.indexID = [NSString stringWithFormat:@"%@",self.data[indexPath.item]];
         return cell;
         
     }else {

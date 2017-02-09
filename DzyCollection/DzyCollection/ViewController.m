@@ -311,8 +311,8 @@ static NSString * titleCellId = @"TitleCell";
 
         [self.titleScroll scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         
-        BodyCell *viewCell =(BodyCell *)cell;
-        [viewCell loadDataWithIndex:indexPath.item];
+//        BodyCell *viewCell =(BodyCell *)cell;
+//        [viewCell loadDataWithIndex:indexPath.item];
         
     }
     

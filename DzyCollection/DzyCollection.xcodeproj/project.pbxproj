@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400A36651E4C0ACF006F003A /* DzyItemMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 400A36641E4C0ACF006F003A /* DzyItemMenuView.m */; };
 		404EF30B1E3744D9007A3D30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF30A1E3744D9007A3D30 /* main.m */; };
 		404EF30E1E3744D9007A3D30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF30D1E3744D9007A3D30 /* AppDelegate.m */; };
 		404EF3111E3744D9007A3D30 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EF3101E3744D9007A3D30 /* ViewController.m */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		400A36631E4C0ACF006F003A /* DzyItemMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DzyItemMenuView.h; sourceTree = "<group>"; };
+		400A36641E4C0ACF006F003A /* DzyItemMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DzyItemMenuView.m; sourceTree = "<group>"; };
 		404EF3061E3744D9007A3D30 /* DzyCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DzyCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404EF30A1E3744D9007A3D30 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		404EF30C1E3744D9007A3D30 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				407241A11E496EE000C4A89D /* TitleFlowLayout.m */,
 				40CF2BFC1E4B1B330012D64F /* DzyCollectionViewController.h */,
 				40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */,
+				400A36631E4C0ACF006F003A /* DzyItemMenuView.h */,
+				400A36641E4C0ACF006F003A /* DzyItemMenuView.m */,
 			);
 			path = DzyCollection;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 			files = (
 				404EF3111E3744D9007A3D30 /* ViewController.m in Sources */,
 				40CF2BED1E4AE6FD0012D64F /* CoclumnCollectionViewCell.m in Sources */,
+				400A36651E4C0ACF006F003A /* DzyItemMenuView.m in Sources */,
 				404EF30E1E3744D9007A3D30 /* AppDelegate.m in Sources */,
 				40CF2BF01E4AE6FD0012D64F /* ColumnViewController.m in Sources */,
 				404EF30B1E3744D9007A3D30 /* main.m in Sources */,
