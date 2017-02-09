@@ -39,6 +39,10 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
  */
 @property (nonatomic, strong)NSMutableArray *cellAttributesArray;
 
+/**
+ is to reload
+ */
+@property (nonatomic, assign) BOOL isReload;
 
 @end
 
@@ -65,6 +69,7 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
         
         [self.selectedArray addObjectsFromArray:selectedArray];
         [self.optionalArray addObjectsFromArray:optionalArray];
+
         [self configCollection];
         
     }
@@ -169,6 +174,7 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
         
         self.hidden = YES;
         if (self.delegate && [self.delegate respondsToSelector:@selector(reloadingDataWithNumber:andData:)]) {
+            
             [self.delegate reloadingDataWithNumber:indexPath.item andData:self.selectedArray];
         }
 
@@ -275,26 +281,32 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
                 //完成
                 else{
                     weakSelf.isSort = NO;
-                    if (weakSelf.cellAttributesArray.count) {
-                        for (UICollectionViewLayoutAttributes *attributes in weakSelf.cellAttributesArray) {
-                            CoclumnCollectionViewCell *cell = (CoclumnCollectionViewCell *)[weakSelf.collectionView cellForItemAtIndexPath:attributes.indexPath];
-                            for (UIPanGestureRecognizer *pan in cell.gestureRecognizers) {
-                                [cell removeGestureRecognizer:pan];
-                            }
-                        }
-                    }
+                    //如果编辑状态下才使用手势打开下面注释掉
+//                    if (weakSelf.cellAttributesArray.count) {
+//                        for (UICollectionViewLayoutAttributes *attributes in weakSelf.cellAttributesArray) {
+//                            CoclumnCollectionViewCell *cell = (CoclumnCollectionViewCell *)[weakSelf.collectionView cellForItemAtIndexPath:attributes.indexPath];
+//                            for (UIPanGestureRecognizer *pan in cell.gestureRecognizers) {
+//                                [cell removeGestureRecognizer:pan];
+//                            }
+//                        }
+//                    }
                 }
                 
                 [weakSelf.collectionView reloadData];
             }];
-            //hidden 
-            [reusableView setBackButton:^{
-                weakSelf.hidden = YES;
-                NSLog(@" -- %ld",(long)self.number);
 
+            //hidden
+            [reusableView setBackButton:^{
+                NSLog(@" -- %ld",(long)self.number);
+                
+                weakSelf.isSort = NO;
+                [weakSelf.collectionView reloadData];
+                
                 if (self.delegate && [self.delegate respondsToSelector:@selector(reloadingDataWithNumber:andData:)]) {
                     [self.delegate reloadingDataWithNumber:self.number andData:self.selectedArray];
                 }
+                weakSelf.hidden = YES;
+
             }];
             
             reusableView.titleLabel.text = @"已选栏目";
@@ -321,7 +333,9 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
             [cell addGestureRecognizer:pan];
         }
         else{
-            
+            for (UIPanGestureRecognizer *pan in cell.gestureRecognizers) {
+                [cell removeGestureRecognizer:pan];
+            }
         }
         //最后一位是否影藏(为了动画效果)
         if (indexPath.row == self.selectedArray.count - 1) {
@@ -338,8 +352,6 @@ static NSString *headTwo = @"ColumnReusableViewTwo";
 - (void)setNumber:(NSInteger)number {
 
     _number = number;
-    NSLog(@" -- %ld",(long)number);
-
 }
 
 -(void)dealloc{

@@ -25,7 +25,7 @@
  */
 @property (nonatomic, strong)NSMutableArray *optionalArray;
 
-@property (nonatomic ) NSInteger number;
+@property (nonatomic, assign) NSInteger number;
 
 @property (nonatomic ) id<ColumnViewDelegate>delegate;
 

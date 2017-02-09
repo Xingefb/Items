@@ -57,16 +57,10 @@ static NSString * titleCellId = @"TitleCell";
 
 }
 
-- (void)reloadingDataWith:(NSMutableArray *)data {
-    
-    [self backToLoadWith:data];
-    
-}
-
 - (IBAction)clickEdit:(UIButton *)sender {
 
     self.columnView.hidden = NO;
-    
+    self.columnView.number = self.currentIndex;
 }
 
 - (void)deleteWithCollection:(UICollectionView *)collectionView andIndex:(NSInteger )index {

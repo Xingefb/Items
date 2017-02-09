@@ -165,21 +165,20 @@ ColumnViewDelegate>
     
     int x = scrollView.contentOffset.x;
     int i = x /SWidth;
-    self.currentIndex = i;
     int sw = SWidth;
     if (x % sw == 0 && self.bodyView == scrollView) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [self.titleView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         [self selectItemColorShowWith:indexPath];
     }
-    
+    self.currentIndex = i;
+
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    //self.currentIndex = indexPath.item;
-    NSLog(@"select - %ld",(long)self.currentIndex);
     self.currentIndex = indexPath.item;
+    NSLog(@"select - %ld",(long)self.currentIndex);
 
     if (collectionView == self.titleView) {
 
