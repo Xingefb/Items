@@ -10,6 +10,11 @@
 
 #import "FMGodTableView.h"
 
+#import <AFNetworking.h>
+#import "BodyModel.h"
+
+static NSString *LoadMessage = @"LoadMessage";
+
 #define SWidth [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height
 
@@ -37,10 +42,28 @@
 }
 
 - (void)loadData {
+
+    [self.data removeAllObjects];
+
+    [[AFHTTPSessionManager manager] GET:@"https://testapp.youbicaifu.com/wealth/tape/getTapeList289?type=currentgains&sort=0&page_flag=1&req_num=10" parameters:@{@"type_id":self.indexID} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+       
+        NSLog(@"%@",responseObject);
+
+        for (NSDictionary *dic in responseObject[@"data"][@"tape_list"]) {
+            BodyModel *model = [[BodyModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [self.data addObject:model];
+        }
+        
+        [self.tableView reloadData];
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
     
-    self.lab.text = self.indexID;
-    NSLog(@" - %@",self.indexID);
-    [self.tableView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self loadData];
+    });
     
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HHmm"];
@@ -48,25 +71,18 @@
     NSString * dateString = [formatter stringFromDate:date];
     
     if ([dateString compare:@"0700"] == NSOrderedDescending && [dateString compare:@"0930"] == NSOrderedAscending) {
-        [self repeatLoad];
+
+
     }
     
     if ([dateString compare:@"1300"] == NSOrderedDescending && [dateString compare:@"1500"] == NSOrderedAscending) {
-        [self repeatLoad];
+
     }
     
     if ([dateString compare:@"1900"] == NSOrderedDescending && [dateString compare:@"2100"] == NSOrderedAscending) {
-        [self repeatLoad];
+
     }
 
-}
-
-- (void)repeatLoad {
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self loadData];
-    });
-    
 }
 
 - (UIScrollView *)titleMenu {
@@ -110,6 +126,8 @@
 
 -(void)createTableViews{
 
+    self.data = [NSMutableArray arrayWithCapacity:10];
+    
     [self.contentView addSubview:self.titleMenu];
     
     _tableView = [[FMGodTableView alloc] initWithFrame:CGRectMake(0, 60, SWidth, self.bounds.size.height - 60)];
@@ -122,15 +140,11 @@
     // 注册一个
     extern NSString *GodCellScrollNotification;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollMove:) name:GodCellScrollNotification object:nil];
-
-    self.lab = [[UILabel alloc] initWithFrame:CGRectMake(80, 80, 80, 80)];
-    self.lab.backgroundColor = [UIColor orangeColor];
-    [self.contentView addSubview:self.lab];
     
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
+    return self.data.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -144,6 +158,9 @@
     cell.layoutMargins = UIEdgeInsetsZero;
     cell.separatorInset = UIEdgeInsetsZero;
     
+    BodyModel *model = self.data[indexPath.item];
+    cell.model = model;
+    
     [cell setClickTap:^{
         NSLog(@" - %ld",(long)indexPath.row);
         
@@ -152,8 +169,9 @@
     return cell;
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
     // 控制第一个不发生变化
     NSArray *views = scrollView.subviews;
     UIView *first = views.lastObject;
@@ -198,6 +216,7 @@
     if (self = [super initWithFrame:frame]) {
 
         NSLog(@"init ");
+        
         [self createTableViews];
 
     }

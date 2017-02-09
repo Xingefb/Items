@@ -19,6 +19,13 @@
 
 }
 
+- (void)setModel:(BodyModel *)model {
+    
+    _model = model;
+    self.name.text = model.fullname;
+
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

@@ -29,6 +29,7 @@
 		40CF2BFA1E4AF4AC0012D64F /* FMGodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BF71E4AF4AC0012D64F /* FMGodTableView.m */; };
 		40CF2BFB1E4AF4AC0012D64F /* FMGodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */; };
 		40CF2BFE1E4B1B330012D64F /* DzyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */; };
+		40E691BF1E4C55FE00E0FA95 /* BodyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E691BE1E4C55FE00E0FA95 /* BodyModel.m */; };
 		4590A14E8FABA0E5E6CD8CA2 /* libPods-DzyCollectionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5479C73E6FF448774F88A7 /* libPods-DzyCollectionTests.a */; };
 		E294E24246363889754E716A /* libPods-DzyCollectionUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48224859BB37D8D24A9937E2 /* libPods-DzyCollectionUITests.a */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,8 @@
 		40CF2BF91E4AF4AC0012D64F /* FMGodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGodTableViewCell.m; sourceTree = "<group>"; };
 		40CF2BFC1E4B1B330012D64F /* DzyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DzyCollectionViewController.h; sourceTree = "<group>"; };
 		40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DzyCollectionViewController.m; sourceTree = "<group>"; };
+		40E691BD1E4C55FE00E0FA95 /* BodyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyModel.h; sourceTree = "<group>"; };
+		40E691BE1E4C55FE00E0FA95 /* BodyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyModel.m; sourceTree = "<group>"; };
 		48224859BB37D8D24A9937E2 /* libPods-DzyCollectionUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DzyCollectionUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		510D5AF2048F254EECCAAC0A /* Pods-DzyCollection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzyCollection.release.xcconfig"; path = "Pods/Target Support Files/Pods-DzyCollection/Pods-DzyCollection.release.xcconfig"; sourceTree = "<group>"; };
 		5288B263019FA54BD859D62A /* libPods-DzyCollection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DzyCollection.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +206,8 @@
 				40CF2BFD1E4B1B330012D64F /* DzyCollectionViewController.m */,
 				400A36631E4C0ACF006F003A /* DzyItemMenuView.h */,
 				400A36641E4C0ACF006F003A /* DzyItemMenuView.m */,
+				40E691BD1E4C55FE00E0FA95 /* BodyModel.h */,
+				40E691BE1E4C55FE00E0FA95 /* BodyModel.m */,
 			);
 			path = DzyCollection;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				400A36651E4C0ACF006F003A /* DzyItemMenuView.m in Sources */,
 				404EF30E1E3744D9007A3D30 /* AppDelegate.m in Sources */,
 				40CF2BF01E4AE6FD0012D64F /* ColumnViewController.m in Sources */,
+				40E691BF1E4C55FE00E0FA95 /* BodyModel.m in Sources */,
 				404EF30B1E3744D9007A3D30 /* main.m in Sources */,
 				4072419F1E496ED200C4A89D /* ViewFlowLayout.m in Sources */,
 				40CF2BFE1E4B1B330012D64F /* DzyCollectionViewController.m in Sources */,

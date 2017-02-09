@@ -151,8 +151,8 @@ ColumnViewDelegate>
     self.data =  [NSMutableArray arrayWithCapacity:10];
     self.sources =  [NSMutableArray arrayWithCapacity:10];
     
-    [self.data addObjectsFromArray:@[@"1",@"2",@"3",@"4",@"5",@"6",@"7"]];
-    [self.sources addObjectsFromArray:@[@"8",@"9",@"10",@"11",@"12",@"13",@"14"]];
+    [self.data addObjectsFromArray:@[@"10",@"12",@"13",@"14",@"15",@"16",@"17"]];
+    [self.sources addObjectsFromArray:@[@"8",@"9",@"7",@"6",@"5",@"4",@"3"]];
 
     [self createUI];
     
@@ -184,9 +184,9 @@ ColumnViewDelegate>
 
     if (collectionView == self.titleView) {
 
-        [self.bodyView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+        [self.bodyView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         [self.titleView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        
+//        [self.bodyView reloadData];
     }
 }
 

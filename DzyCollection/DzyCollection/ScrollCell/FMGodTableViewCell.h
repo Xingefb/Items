@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BodyModel.h"
+
 static NSString *GodCellScrollNotification = @"GodCellScrollNotification";
 @interface FMGodTableViewCell : UITableViewCell<UIScrollViewDelegate>
 
@@ -21,5 +23,7 @@ static NSString *GodCellScrollNotification = @"GodCellScrollNotification";
 @property (nonatomic ) UILabel *quoteChange;
 @property (nonatomic ) UILabel *turnoverRate;
 @property (nonatomic ) UILabel *volume;
+
+@property (nonatomic ) BodyModel *model;
 
 @end
