@@ -31,6 +31,7 @@ static NSString *LoadMessage = @"LoadMessage";
 @end
 
 @implementation BodyCell
+//    [self.titleView visibleCells];
 
 - (void)setIndexID:(NSString *)indexID {
     
@@ -42,7 +43,7 @@ static NSString *LoadMessage = @"LoadMessage";
 }
 
 - (void)loadData {
-
+    
     [self.data removeAllObjects];
 
     [[AFHTTPSessionManager manager] GET:@"https://testapp.youbicaifu.com/wealth/tape/getTapeList289?type=currentgains&sort=0&page_flag=1&req_num=10" parameters:@{@"type_id":self.indexID} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -61,28 +62,29 @@ static NSString *LoadMessage = @"LoadMessage";
         
     }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self loadData];
-    });
-    
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HHmm"];
     NSDate * date = [NSDate date];
     NSString * dateString = [formatter stringFromDate:date];
     
     if ([dateString compare:@"0700"] == NSOrderedDescending && [dateString compare:@"0930"] == NSOrderedAscending) {
-
-
+        [self repeatLoad];
     }
     
     if ([dateString compare:@"1300"] == NSOrderedDescending && [dateString compare:@"1500"] == NSOrderedAscending) {
-
+        [self repeatLoad];
     }
     
     if ([dateString compare:@"1900"] == NSOrderedDescending && [dateString compare:@"2100"] == NSOrderedAscending) {
-
+        [self repeatLoad];
     }
 
+}
+
+- (void)repeatLoad {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self loadData];
+    });
 }
 
 - (UIScrollView *)titleMenu {
