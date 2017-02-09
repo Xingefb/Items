@@ -12,9 +12,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *theMsg;
 
+@property (nonatomic ) UILabel *lab;
+
 @property (nonatomic ) NSString *indexID;
 
 @property (nonatomic,assign) float CellLastScrollX; // 最后的cell的移动距离
+
 - (void)loadData;
 
 @end

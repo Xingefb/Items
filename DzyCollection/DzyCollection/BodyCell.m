@@ -20,7 +20,6 @@
 @property (nonatomic ) UIScrollView *titleMenu;
 @property (nonatomic,retain) FMGodTableView *tableView;
 @property (nonatomic ) NSMutableArray *data;
-@property (nonatomic ) NSTimer *timer;
 
 @property (nonatomic ) NSInteger createNum;
 
@@ -31,13 +30,6 @@
 - (void)setIndexID:(NSString *)indexID {
     
     _indexID = indexID;
-
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    //2.向文件中写入内容
-    [userDefaults setObject:indexID forKey:@"cell"];
-    //2.1立即同步
-    [userDefaults synchronize];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:GodCellScrollNotification object:self userInfo:@{@"x":@(0)}];
  
@@ -46,41 +38,35 @@
 
 - (void)loadData {
     
-    NSString *str = [[NSUserDefaults standardUserDefaults] stringForKey:@"cell"];
-    NSLog(@" - %@",str);
+    self.lab.text = self.indexID;
+    NSLog(@" - %@",self.indexID);
     [self.tableView reloadData];
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self loadData];
-    });
     
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HHmm"];
+    NSDate * date = [NSDate date];
+    NSString * dateString = [formatter stringFromDate:date];
     
-//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"HHmm"];
-//    NSDate * date = [NSDate date];
-//    NSString * dateString = [formatter stringFromDate:date];
-//    
-//    if ([self.timer isValid]) {
-//        self.timer.fireDate = [NSDate distantFuture];
-//    }
-//    
-//    if ([dateString compare:@"0700"] == NSOrderedDescending && [dateString compare:@"0930"] == NSOrderedAscending) {
-//        self.timer.fireDate = [NSDate distantPast];
-//    }
-//    
-//    if ([dateString compare:@"1300"] == NSOrderedDescending && [dateString compare:@"1500"] == NSOrderedAscending) {
-//        self.timer.fireDate = [NSDate distantPast];
-//    }
-//    
-//    if ([dateString compare:@"1900"] == NSOrderedDescending && [dateString compare:@"2100"] == NSOrderedAscending) {
-//        self.timer.fireDate = [NSDate distantPast];
-//    }
+    if ([dateString compare:@"0700"] == NSOrderedDescending && [dateString compare:@"0930"] == NSOrderedAscending) {
+        [self repeatLoad];
+    }
+    
+    if ([dateString compare:@"1300"] == NSOrderedDescending && [dateString compare:@"1500"] == NSOrderedAscending) {
+        [self repeatLoad];
+    }
+    
+    if ([dateString compare:@"1900"] == NSOrderedDescending && [dateString compare:@"2100"] == NSOrderedAscending) {
+        [self repeatLoad];
+    }
 
 }
 
-- (void)action:(NSTimer *)timer {
-    //[self loadData];
+- (void)repeatLoad {
 
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self loadData];
+    });
+    
 }
 
 - (UIScrollView *)titleMenu {
@@ -137,14 +123,9 @@
     extern NSString *GodCellScrollNotification;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollMove:) name:GodCellScrollNotification object:nil];
 
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        
-//        self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(action:) userInfo:nil repeats:YES];
-//        //如果滑动想请求数据解开注释
-//        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-//
-//    });
+    self.lab = [[UILabel alloc] initWithFrame:CGRectMake(80, 80, 80, 80)];
+    self.lab.backgroundColor = [UIColor orangeColor];
+    [self.contentView addSubview:self.lab];
     
 }
 
